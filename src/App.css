@@ -1,0 +1,1449 @@
+/* Base full-height setup */
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@500;700&display=swap');
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+  font-family: 'Lato', sans-serif;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Poppins', sans-serif;
+}
+
+:root {
+  --primary-color: #6B9080;
+  --background-color: #F4F6F5;
+  --text-color: #2E2E2E;
+  --accent-color: #A4C3B2;
+}
+
+body {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+header {
+  background-color: var(--background-color);
+  color: var(--text-color);
+}
+
+a, button {
+  color: #fff;
+  background-color: var(--primary-color);
+  border: none;
+}
+
+a:hover, button:hover {
+  background-color: var(--accent-color);
+}
+
+
+/* Page wrapper: vertical flex, full height & width */
+.page-wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  width: 100%;
+}
+
+/* Main content grows between header/footer */
+.page-main {
+  flex: 1;
+  width: 100%;
+  padding-top: 2rem;
+  padding-bottom: 2rem;
+  margin: 0; 
+}
+
+/* Larger screens */
+@media (min-width: 768px) {
+  .page-main {
+    padding: 2rem;
+    font-size: 1.1rem;
+  }
+}
+
+@media (min-width: 1024px) {
+  .page-main {
+    padding: 3rem;
+    font-size: 1.2rem;
+  }
+}
+
+
+/* Header */
+header {
+  background-color: var(--primary-color);
+  padding: 1rem 0;
+  text-align: center;  /* optional: center header text */
+}
+
+.header-banner {
+  width: 100%;
+  height: 50px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.header-content {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: white;
+  margin-right: auto; /* pushes logo all the way left */
+}
+
+/* Desktop navigation links */
+.nav-links {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav-link {
+  color: white;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Hamburger menu - hidden on desktop */
+.hamburger {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+}
+
+.home-icon {
+  display: none;
+  font-size: 1.8rem;
+  cursor: pointer;
+  color: white;
+}
+
+/* Responsive: show hamburger on small screens, hide nav links */
+@media (max-width: 768px) {
+  .nav-links {
+    display: none;
+  }
+  .hamburger {
+    display: block;
+  }
+}
+
+/* mobile slide-down menu (keeps your header look) */
+.mobile-menu {
+  background: var(--primary-color);
+  overflow: hidden;
+  max-height: 0;
+  transition: max-height 0.32s ease;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+/* open state - allow enough height for links */
+.mobile-menu.open {
+  max-height: 270px; /* tweak if you have more links */
+}
+
+/* each mobile link */
+.mobile-link {
+  display: block;
+  padding: 0.9rem 1.5rem;
+  color: white;
+  text-decoration: none;
+  font-weight: 600;
+  border-top: 1px solid rgba(255,255,255,0.06);
+}
+
+/* first item: no border-top */
+.mobile-link:first-child { border-top: none; }
+
+/* hover state */
+.mobile-link:hover {
+  background: rgba(255,255,255,0.04);
+  color: white;
+}
+
+/* ensure hamburger remains hidden on desktop per your rules (keeps your existing media query) */
+/* your existing media query already switches .hamburger display on max-width:768px */
+
+header {
+  position: sticky; /* or 'fixed' if you want it always visible without any scroll gap */
+  top: 0;
+  z-index: 1000; /* ensures it stays above other content */
+  width: 100%;
+}
+
+/* Phone icon styling */
+/* Phone icon styling */
+.phone-icon-2 {
+  color: white; /* match header style */
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+}
+
+.contact-icon-2 {
+  font-size: 1.5rem; /* adjust size */
+}
+
+.left-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.home-icon svg {
+  font-size: 1.7rem;
+  color: white;
+  transition: opacity 0.25s ease;
+}
+
+.home-icon svg:hover {
+  opacity: 0.75;
+}
+
+.left-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;  /* space between hamburger and home */
+}
+
+/* Style for the white home icon */
+.home-icon {
+  color: white;
+  font-size: 1.8rem;   /* matches your hamburger size */
+  display: flex;
+  align-items: center;
+}
+
+.home-icon:hover {
+  opacity: 0.8;
+}
+
+
+/* Hero */
+.hero-banner {
+  width: 100%;
+  height: 50vh; /* makes it tall but not huge */
+  /*background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
+                    url('/test.jpg');*/
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 1rem;
+  margin-bottom: -2rem;
+}
+
+.hero-content h1 {
+  font-size: 1.5rem; /* mobile-friendly */
+  color: white;
+  margin-bottom: 3rem;
+  
+}
+
+.apply-btn {
+  background-color: #708d81; /* olive green */
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2rem;
+  font-size: 1.05rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Hover effect */
+.apply-btn:hover {
+  background-color: #5e7a6f; /* slightly darker olive */
+  transform: translateY(-2px);
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
+}
+
+/* Active (click) state */
+.apply-btn:active {
+  transform: translateY(0);
+  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+
+/* Tablet/Desktop adjustments */
+@media (min-width: 769px) {
+  .hero-content h1 {
+    font-size: 2.5rem;
+  }
+  .apply-btn {
+    font-size: 1.25rem;
+    padding: 1rem 2rem;
+  }
+}
+
+/* Teaser Banner */
+.teaser-banner {
+  width: 100%;
+  height: 50vh; /* adjust height as needed */
+  background-size: cover;
+  background-position: center;
+  display: flex;
+  justify-content: center; /* centers content vertically */
+  align-items: center;     /* centers content horizontally */
+  margin-top: 7rem;
+  margin-bottom: 5rem;
+  color: black;
+}
+
+/* Teaser Content */
+.teaser-content {
+  display: flex;
+  flex-direction: column; /* stack heading, text, image */
+  justify-content: center; /* center within content block */
+  align-items: center;     /* center horizontally */
+  max-width: 700px;        /* keeps text from stretching too wide */
+  text-align: center;      /* centers heading and paragraph text */
+}
+
+/* Teaser Heading */
+#teaser-title {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+  color: black;
+  
+}
+
+/* Teaser Paragraph */
+#teaser-des {
+  font-size: 1rem;
+  margin-bottom: 1.5rem;
+  color: black;
+}
+
+/* Teaser Image */
+.teaser-photo {
+  width: 100%;
+  max-width: 600px;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+
+/* the underline itself */
+#teaser-title::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 0.2rem;
+  background-color: #708D81; /* olive green accent */
+  margin: 0.5rem auto 0;      /* top 0.5rem, left/right auto, bottom 0 */
+  border-radius: 2px;
+}
+
+
+/* Floor Plans */
+.floorplans {
+  width: 100%;
+  padding: 3rem 1rem;
+  text-align: center;
+
+}
+
+.floorplans-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+.floorplans-row {
+  display: flex;
+  flex-direction: row; /* Always side by side */
+  flex-wrap: wrap; /* Allow wrapping if screen is very small */
+  gap: 1rem;
+  justify-content: center;
+  align-items: stretch;
+}
+
+.floorplan-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+  width: 45%; /* two cards fit nicely side by side */
+  max-width: 350px;
+  min-width: 250px; /* prevents squishing */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.floorplan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 4px 14px rgba(0,0,0,0.15);
+}
+
+.floorplan-img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.apply-btn-plans {
+  display: inline-block; /* or block */
+  margin-top: 2rem;
+  background-color: #708d81; /* olive green */
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2rem;
+  font-size: 1.05rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+/* Make side-by-side on larger screens */
+@media (min-width: 768px) {
+  .floorplans-row {
+    flex-direction: row;
+    justify-content: center;
+  }
+
+  .floorplan-card {
+    width: 40%;
+  }
+}
+
+
+
+/* the underline itself */
+.floorplans-title::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 0.2rem;
+  background-color: #708D81; /* olive green accent */
+  margin: 0.5rem auto 0;      /* top 0.5rem, left/right auto, bottom 0 */
+  border-radius: 2px;
+}
+
+/* Amenities */
+.amenities {
+  width: 100%;
+  padding: 3rem 1rem;
+  
+  text-align: center;
+}
+
+.amenities-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.amenities-text {
+  max-width: 700px;
+  margin: 0 auto 2rem;
+  color: #555;
+}
+
+.amenities-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+  justify-items: center;
+}
+
+.amenity-item img {
+  width: 100%;
+  height: auto;
+  border-radius: 0.5rem;
+}
+
+/* stack on small screens */
+@media (max-width: 600px) {
+  .amenities-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* the underline itself */
+.amenities-title::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 0.2rem;
+  background-color: #708D81; /* olive green accent */
+  margin: 0.5rem auto 0;      /* top 0.5rem, left/right auto, bottom 0 */
+  border-radius: 2px;
+}
+
+/* Gallery */
+.gallery-section {
+  padding: 3rem 1rem;
+  
+}
+
+.gallery-section h2 {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 2rem;
+}
+
+/* the underline itself */
+.gallery-section h2::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 0.2rem;
+  background-color: #708D81; /* olive green accent */
+  margin: 0.5rem auto 0;      /* top 0.5rem, left/right auto, bottom 0 */
+  border-radius: 2px;
+}
+
+
+/* Map */
+.map-section {
+  padding: 3rem 1rem;
+  
+}
+
+.map-section a {
+  margin-top: 2.5rem;
+  
+}
+
+.apply-btn-map {
+  text-decoration: none; /* removes underline */
+}
+
+
+.map-container {
+  width: 100%;
+  max-width: 900px;
+  margin: 0 auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+  
+}
+
+/* the underline itself */
+.map-section h2::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 0.2rem;
+  background-color: #708D81; /* olive green accent */
+  margin: 0.5rem auto 0;      /* top 0.5rem, left/right auto, bottom 0 */
+  border-radius: 2px;
+}
+
+.apply-btn-map {
+  display: inline-block; /* or block */
+  background-color: #708d81; /* olive green */
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2rem;
+  font-size: 1.05rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  
+}
+
+/* Contact Us */
+.contact-section {
+  width: 100%;
+  padding: 4rem 1rem;
+  
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.contact-title {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.contact-text {
+  max-width: 40rem; /* ~640px */
+  margin: 0 auto;
+  color: #555;
+  line-height: 1.6;
+}
+
+/* the underline itself */
+.contact-section h2::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 0.2rem;
+  background-color: #708D81; /* olive green accent */
+  margin: 0.5rem auto 0;      /* top 0.5rem, left/right auto, bottom 0 */
+  border-radius: 2px;
+}
+
+/* Contact Section */
+.contact-section {
+  width: 100%;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+/* Title */
+.contact-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+  position: relative;
+}
+
+/* Title underline */
+.contact-title::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 0.2rem;
+  background-color: #708D81; /* olive accent */
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* Form container */
+.contact-form {
+  max-width: 700px;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+/* Two-column row */
+.form-row {
+  display: flex;
+  gap: 1rem;
+}
+
+/* Inputs */
+.form-input {
+  flex: 1;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+}
+
+/* Textarea styling */
+.form-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  font-size: 1rem;
+  border: 1px solid #ccc;
+  border-radius: 0.25rem;
+  resize: vertical;
+}
+
+/* Button (same green style) */
+.contact-btn {
+  display: block;
+  margin: 0 auto;
+  background-color: #708d81; /* olive green */
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2rem;
+  font-size: 1.05rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.contact-btn:hover {
+  background-color: #5f756b;
+}
+
+/* Responsive adjustments */
+@media (max-width: 600px) {
+  .form-row {
+    flex-direction: column;
+  }
+}
+
+/* All Plans Page */
+/* SECTION */
+.allplans {
+  width: 100%;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.allplans-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 2.5rem;
+  position: relative;
+}
+
+/* underline */
+.allplans-title::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 0.25rem;
+  background-color: #708D81; /* olive accent */
+  margin: 0.75rem auto 0;
+  border-radius: 10px;
+}
+
+/* GRID */
+.allplans-grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  justify-items: center;
+}
+
+/* CARD */
+.plan-card {
+  background: white;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  width: 90%;
+  max-width: 650px;
+  box-shadow: 0 4px 18px rgba(0,0,0,0.1);
+  transition: transform 0.25s ease;
+}
+
+.plan-card:hover {
+  transform: translateY(-4px);
+}
+
+.plan-img {
+  width: 100%;
+  border-radius: 0.7rem;
+  margin-bottom: 1.2rem;
+}
+
+.plan-name {
+  font-size: 1.5rem;
+  color: #222;
+  margin-bottom: 0.5rem;
+}
+
+.plan-price {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #708D81;
+}
+
+/* 2 columns on tablets+ */
+@media (min-width: 768px) {
+  .allplans-grid {
+    grid-template-columns: 1fr 1fr;
+  }
+
+  .plan-card {
+    max-width: 90%;
+  }
+}
+
+/* Contact Info */
+/* Contact Triangle Section */
+.contact-triangle {
+  width: 100%;
+  padding: 3rem 1rem;
+  background-color: #ffffff; /* white background */
+  text-align: center;
+}
+
+/* Header with underline */
+.contact-triangle-title {
+  font-size: 2rem;
+  margin-bottom: 2rem;
+  color: #333;
+  position: relative;
+}
+
+/* Underline for the header */
+.contact-triangle-title::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 0.2rem;
+  background-color: #708D81; /* olive green */
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+/* Row of two items */
+.contact-triangle-row {
+  display: flex;
+  justify-content: center;
+  gap: 4rem; /* spacing between phone and email */
+  margin-bottom: 2rem;
+  flex-wrap: wrap; /* keep responsive on smaller screens */
+}
+
+/* Single centered item */
+.contact-triangle-single {
+  display: flex;
+  justify-content: center;
+}
+
+/* Each contact item */
+.contact-triangle-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  font-size: 1.1rem;
+  color: #333;
+}
+
+/* Icons */
+.contact-icon {
+  font-size: 2rem;
+  color: #708D81;
+  margin-bottom: 0.5rem;
+}
+
+
+/* New Header Hamburger Content */
+
+
+/* Modal for AllPlans */
+/* Overlay */
+.amenities-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+/* Modal box */
+.amenities-modal {
+  background: white;
+  width: 90%;
+  max-width: 500px;
+  padding: 2rem;
+  border-radius: 1rem;
+  position: relative;
+  animation: modalFade 0.25s ease;
+}
+
+@keyframes modalFade {
+  from { opacity: 0; transform: translateY(-15px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Close button (X) */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #444;
+  cursor: pointer;
+}
+
+/* Header with underline */
+.modal-title {
+  text-align: center;
+  font-size: 1.7rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  position: relative;
+}
+
+.modal-title::after {
+  content: "";
+  display: block;
+  width: 4rem;
+  height: 0.25rem;
+  background-color: #708D81;
+  margin: 0.6rem auto 0;
+  border-radius: 10px;
+}
+
+/* Placeholder text */
+.modal-placeholder {
+  text-align: center;
+  color: #555;
+  font-size: 1rem;
+}
+
+/* Amenities button */
+.amenities-btn {
+  margin-top: 1rem;
+  padding: 0.7rem 1.4rem;
+  background: #708D81;
+  color: #fff;
+  border: none;
+  border-radius: 1.5rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.amenities-btn:hover {
+  transform: translateY(-2px);
+  background: #5f786f;
+}
+
+
+
+
+/* Footer */
+footer {
+  background-color: #212529;
+  color: white;
+  padding: 1rem 0;
+  text-align: center;  /* optional: center footer text */
+}
+
+/* MEDIA QUIERIES FOR DIFFERENT SIZES */
+/* — Large-Desktop / Wide-Screen Overrides — */
+
+@media (min-width: 1280px) {
+  /* Make page wrapper slightly wider / add more padding */
+  .page-main {
+    padding: 4rem 3rem;
+    max-width: 1440px;
+    margin: 0 auto;
+  }
+
+  /* Header: increase content max-width for large screens */
+  .header-content {
+    max-width: 1400px;
+    padding: 0 2rem;
+  }
+
+  /* Floorplans / AllPlans: allow 3 cards per row instead of 2 */
+  .allplans-grid {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2.5rem;
+  }
+  .plan-card {
+    max-width: 400px;
+  }
+
+  /* Increase base font size slightly for readability on large screens */
+  body {
+    font-size: 1.05rem;
+  }
+
+  /* Hero banner: increase height and heading size */
+  .hero-banner {
+    height: 60vh;
+  }
+  .hero-content h1 {
+    font-size: 3.25rem;
+  }
+
+  /* Modal: maybe enlarge for large screens */
+  .amenities-modal {
+    padding: 3rem;
+    max-width: 600px;
+  }
+
+  
+  /* Make header content wider and push items apart */
+  .header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Move all nav links to the right side */
+  .nav-links {
+    display: flex;
+    margin-left: auto;   /* pushes them fully right */
+    gap: 2rem;
+  }
+
+  /* Make the desktop nav links larger and white */
+  .nav-link {
+   
+    font-size: 1.3rem !important;  /* adjust as desired */
+    font-weight: 600;
+    color: white !important;
+  
+  }
+
+  /* Home + burger on left (your new layout) */
+  .left-icons {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+  }
+
+  /* Resize/home icon styling for desktop */
+  .home-icon svg {
+    font-size: 1.8rem;
+    color: white;
+  }
+
+  /* Phone icon on right — larger and white */
+  .phone-icon-2 svg {
+    font-size: 1.8rem;
+    color: white;
+  }
+
+  /* Hide hamburger icon on desktop */
+  .hamburger {
+    display: none;
+  }
+  
+    /* Hide home + phone icons on desktop */
+  .home-icon,
+  .phone-icon-2 {
+    display: none !important;
+  }
+
+/* Desktop: lock into 2 nicely centered columns */
+  .amenities-grid {
+    grid-template-columns: repeat(2, 300px); /* fixed width columns */
+    justify-content: center;                 /* center the whole grid */
+    gap: 2rem;                                /* space between items */
+    margin: 0 auto;                           /* center the grid itself */
+  }
+
+  .amenity-item img {
+    width: 300px;  /* ensure consistent width */
+    height: auto;
+    border-radius: 10px;
+  }
+
+  
+  #teaser-title {
+    margin-top: 3rem;
+  }
+
+  .floorplans-title {
+    margin-top: 3rem;
+  }
+
+}
+
+/* Medium Size */
+@media (min-width: 1024px) { 
+    /* Make header content wider and push items apart */
+  .header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Move all nav links to the right side */
+  .nav-links {
+    display: flex;
+    margin-left: auto;   /* pushes them fully right */
+    gap: 2rem;
+  }
+
+  /* Make the desktop nav links larger and white */
+  .nav-link {
+   
+    font-size: 1.3rem !important;  /* adjust as desired */
+    font-weight: 600;
+    color: white !important;
+  
+  }
+
+  /* Home + burger on left (your new layout) */
+  .left-icons {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+  }
+
+  /* Resize/home icon styling for desktop */
+  .home-icon svg {
+    font-size: 1.8rem;
+    color: white;
+  }
+
+  /* Phone icon on right — larger and white */
+  .phone-icon-2 svg {
+    font-size: 1.8rem;
+    color: white;
+  }
+
+  /* Hide hamburger icon on desktop */
+  .hamburger {
+    display: none;
+  }
+  
+    /* Hide home + phone icons on desktop */
+  .home-icon,
+  .phone-icon-2 {
+    display: none !important;
+  }
+
+/* Desktop: lock into 2 nicely centered columns */
+  .amenities-grid {
+    grid-template-columns: repeat(2, 300px); /* fixed width columns */
+    justify-content: center;                 /* center the whole grid */
+    gap: 2rem;                                /* space between items */
+    margin: 0 auto;                           /* center the grid itself */
+  }
+
+  .amenity-item img {
+    width: 300px;  /* ensure consistent width */
+    height: auto;
+    border-radius: 10px;
+  }
+
+  
+  #teaser-title {
+    margin-top: 6rem;
+  }
+
+  .floorplans-title {
+    margin-top: 6rem;
+
+  }
+
+}
+
+@media (min-width: 768px) { 
+      /* Make header content wider and push items apart */
+  .header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  /* Move all nav links to the right side */
+  .nav-links {
+    display: flex;
+    margin-left: auto;   /* pushes them fully right */
+    gap: 2rem;
+  }
+
+  /* Make the desktop nav links larger and white */
+  .nav-link {
+   
+    font-size: 1.3rem !important;  /* adjust as desired */
+    font-weight: 600;
+    color: white !important;
+  
+  }
+
+  /* Home + burger on left (your new layout) */
+  .left-icons {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+  }
+
+  /* Resize/home icon styling for desktop */
+  .home-icon svg {
+    font-size: 1.8rem;
+    color: white;
+  }
+
+  /* Phone icon on right — larger and white */
+  .phone-icon-2 svg {
+    font-size: 1.8rem;
+    color: white;
+  }
+
+  /* Hide hamburger icon on desktop */
+  .hamburger {
+    display: none;
+  }
+  
+    /* Hide home + phone icons on desktop */
+  .home-icon,
+  .phone-icon-2 {
+    display: none !important;
+  }
+
+/* Desktop: lock into 2 nicely centered columns */
+  .amenities-grid {
+    grid-template-columns: repeat(2, 300px); /* fixed width columns */
+    justify-content: center;                 /* center the whole grid */
+    gap: 2rem;                                /* space between items */
+    margin: 0 auto;                           /* center the grid itself */
+  }
+
+  .amenity-item img {
+    width: 300px;  /* ensure consistent width */
+    height: auto;
+    border-radius: 10px;
+  }
+
+  
+  #teaser-title {
+    margin-top: 6rem;
+  }
+
+  .floorplans-title {
+    margin-top: 6rem;
+
+  }
+}
+
+/* Big phones */
+@media (min-width: 480px) { 
+          /* Make header content wider and push items apart */
+  .header-content {
+    max-width: 1400px;
+    margin: 0 auto;
+    padding: 0 2rem;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+
+
+
+  /* Home + burger on left (your new layout) */
+  .left-icons {
+    display: flex;
+    gap: 1.2rem;
+    align-items: center;
+  }
+
+  /* Resize/home icon styling for desktop */
+  .home-icon svg {
+    font-size: 1.8rem;
+    color: white;
+  }
+
+  /* Phone icon on right — larger and white */
+  .phone-icon-2 svg {
+    font-size: 1.8rem;
+    color: white;
+  }
+
+
+
+/* Desktop: lock into 2 nicely centered columns */
+  .amenities-grid {
+    grid-template-columns: repeat(2, 300px); /* fixed width columns */
+    justify-content: center;                 /* center the whole grid */
+    gap: 2rem;                                /* space between items */
+    margin: 0 auto;                           /* center the grid itself */
+  }
+
+  .amenity-item img {
+    width: 300px;  /* ensure consistent width */
+    height: auto;
+    border-radius: 10px;
+  }
+
+  
+  #teaser-title {
+    margin-top: 6rem;
+  }
+
+  .floorplans-title {
+    margin-top: 6rem;
+
+  }
+}
+
+
+/*portfolio*/
+/*.portfolio-hero {
+position: relative;
+height: 300px;
+background-size: cover;
+background-position: center;
+display: flex;
+align-items: center;
+justify-content: center;
+}
+
+.portfolio-hero .overlay {
+background-color: rgba(0, 0, 0, 0.5);
+padding: 30px;
+text-align: center;
+color: #fff;
+width: 100%;
+}
+
+.portfolio-hero h1 {
+font-size: 2rem;
+margin: 0;
+}*/
+
+.portfolio-hero {
+position: relative;
+width: 100%;
+min-height: 50vh; /* adjust as needed */
+display: flex;
+align-items: center;
+justify-content: center;
+background-size: cover;
+background-position: center;
+background-repeat: no-repeat;
+/* Add a dimming effect directly on the background image using a pseudo-element */
+}
+
+.portfolio-hero::before {
+content: '';
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background-color: rgba(0, 0, 0, 0.4); /* adjust alpha for darkness */
+z-index: 1;
+}
+
+.portfolio-hero .overlay {
+position: relative;
+z-index: 2; /* text sits above the dim layer */
+text-align: center;
+color: #ffffff; /* make text visible over the dimmed image */
+padding: 2rem;
+}
+
+.portfolio-hero h1 {
+font-size: 2rem; /* adjust for mobile responsiveness */
+font-weight: bold;
+margin: 0;
+}
+
+.properties-section {
+text-align: center;
+padding: 50px 20px;
+}
+
+.section-title {
+font-size: 2rem;
+color: #708D81;; /* standard green */
+margin-bottom: 10px;
+position: relative;
+display: inline-block;
+}
+
+.section-title::after {
+content: '';
+display: block;
+width: 50px;
+height: 4px;
+background-color: #708D81;
+margin: 10px auto 0;
+border-radius: 2px;
+}
+
+.section-description {
+max-width: 600px;
+margin: 0 auto 40px;
+font-size: 1rem;
+color: #333;
+}
+
+.properties-grid {
+display: grid;
+grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+gap: 30px;
+justify-items: center;
+}
+
+.portfolio-card {
+background-color: #fff;
+border-radius: 8px;
+overflow: hidden;
+padding: 20px;
+text-align: center;
+box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+.portfolio-img {
+width: 100%;
+height: 200px;
+object-fit: cover;
+border-radius: 6px;
+}
+
+.portfolio-title {
+font-size: 1.25rem;
+margin: 15px 0 10px;
+color: #708D81;
+}
+
+.portfolio-description {
+font-size: 0.95rem;
+color: #555;
+margin-bottom: 15px;
+}
+
+.portfolio-btn {
+display: inline-block;
+background-color: #708D81;
+color: #fff;
+padding: 10px 20px;
+border-radius: 4px;
+text-decoration: none;
+font-weight: 600;
+transition: background-color 0.2s;
+}
+
+.portfolio-btn:hover {
+background-color: #708D81;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+.portfolio-hero {
+height: 200px;
+}
+
+.portfolio-hero h1 {
+font-size: 1.5rem;
+}
+
+.section-description {
+font-size: 0.9rem;
+}
+}
