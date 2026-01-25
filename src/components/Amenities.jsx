@@ -1,26 +1,89 @@
 import { urlFor } from '../imageUrl'
 
+function Amenities({ title = 'Amenities', lists = [], data = [] }) {
+  const hasImages = Array.isArray(data) && data.length > 0
+  const hasLists = Array.isArray(lists) && lists.length > 0
+
+  if (!hasImages && !hasLists) return null
+
+  return (
+    <section className="amenities">
+      <div className="amenities-content">
+        <h2 className="amenities-title">{title}</h2>
+
+        {/* Images FIRST */}
+        {hasImages && (
+          <div className="amenities-grid">
+            {data.map((img, i) => (
+              <div key={i} className="amenity-item">
+                <img
+                  src={urlFor(img).width(300).height(200).url()}
+                  alt={`Amenity ${i + 1}`}
+                />
+              </div>
+            ))}
+          </div>
+        )}
+
+        {/* Bullet categories UNDER images */}
+        {hasLists && (
+          <div className="amenities-lists">
+            {lists.map((group, idx) => (
+              <div key={idx} className="amenities-list">
+                {group?.category && (
+                  <h3 className="amenities-category">{group.category}</h3>
+                )}
+
+                {Array.isArray(group?.points) && group.points.length > 0 && (
+                  <ul className="amenities-bullets">
+                    {group.points.map((point, i) => (
+                      <li key={i} className="amenities-bullet">
+                        {point}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            ))}
+          </div>
+        )}
+      </div>
+    </section>
+  )
+}
+
+export default Amenities
+
+/*import { urlFor } from '../imageUrl'
+
 function Amenities({ data }) {
-if (!data || !data.length) return null
+  if (!data || !data.length) return null
 
-return (
-<section className="amenities">
-<div className="amenities-content">
-<h2 className="amenities-title">Amenities</h2>
+  return (
+    <section className="amenities">
+      <div className="amenities-content">
+        <h2 className="amenities-title">Amenities</h2>
 
-<div className="amenities-grid">
-{data.map((img, i) => (
-<div key={i} className="amenity-item">
-<img
-src={urlFor(img).width(300).height(200).url()}
-alt={`Amenity ${i + 1}`}
-/>
-</div>
-))}
-</div>
-</div>
-</section>
-)
+        <div className="amenities-grid">
+          {data.map((img, i) => (
+            <div key={i} className="amenity-item">
+              <img
+                src={urlFor(img).width(300).height(200).url()}
+                alt={`Amenity ${i + 1}`}
+              />
+            </div>
+          ))}
+        </div>
+
+       
+        <div className="amenities-btn-wrapper">
+          <button className="apply-btn">
+            View Amenities
+          </button>
+        </div>
+      </div>
+    </section>
+  )
 }
 
 export default Amenities

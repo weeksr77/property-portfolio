@@ -73,6 +73,55 @@ a:hover, button:hover {
 
 
 /* Header */
+
+/* New Header*/
+/* Top utility bar */
+.top-bar {
+  background: white;
+  width: 100%;
+  font-size: 0.85rem;
+  margin-top: -1rem;
+}
+
+.top-bar-content {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0.4rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: white;
+}
+
+.top-bar-phone,
+.top-bar-links a {
+  color: #333;
+  text-decoration: none;
+  font-weight: 500;
+  background-color: white;
+}
+
+.top-bar-links {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.top-bar-links span {
+  color: #777;
+}
+
+.site-title {
+  color: white;
+  font-size: 1.25rem;
+  font-weight: 600;
+  text-decoration: none;
+  margin-right: auto;
+  padding-right: 5rem;
+  
+}
+
+
 header {
   background-color: var(--primary-color);
   padding: 1rem 0;
@@ -107,6 +156,7 @@ header {
 .nav-links {
   display: flex;
   gap: 1.5rem;
+  margin-top: 1rem;
 }
 
 .nav-link {
@@ -131,7 +181,7 @@ header {
 }
 
 /* Responsive: show hamburger on small screens, hide nav links */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .nav-links {
     display: none;
   }
@@ -151,7 +201,7 @@ header {
 
 /* open state - allow enough height for links */
 .mobile-menu.open {
-  max-height: 270px; /* tweak if you have more links */
+  max-height: 500px; /* tweak if you have more links */
 }
 
 /* each mobile link */
@@ -230,126 +280,257 @@ header {
   opacity: 0.8;
 }
 
-
-/* Hero */
-.hero-banner {
-  width: 100%;
-  height: 50vh; /* makes it tall but not huge */
-  /*background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)),
-                    url('/test.jpg');*/
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  text-align: center;
-  padding: 1rem;
-  margin-bottom: -2rem;
+/* more new header content */
+@media (max-width: 1000px) {
+  .site-title {
+    display: none;
+  }
 }
 
-.hero-content h1 {
-  font-size: 1.5rem; /* mobile-friendly */
+.header-content {
+  width: 90%;
+  max-width: 1200px;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.left-icons {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex-shrink: 0;
+}
+
+.site-title {
+  white-space: nowrap;
+  flex-shrink: 0;
+  margin-top: 1.2rem;
+}
+
+.nav-links {
+  display: flex;
+  gap: 1.25rem;
+  white-space: nowrap;
+  margin-left: auto;
+}
+
+.nav-brand {
   color: white;
-  margin-bottom: 3rem;
+  font-weight: 700;
+  font-size: 1.2rem;
+  white-space: nowrap;
+  margin-top: 1rem;
+  text-decoration: none;
+}
+
+@media (max-width: 1000px) {
+  .nav-brand {
+    display: none;
+  }
+}
+
+@media (max-width: 1024px) {
+  .site-title {
+    font-size: 1.1rem;
+  }
+
+  .nav-links {
+    gap: 1rem;
+  }
+}
+
+@media (max-width: 1000px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+
+  .site-title {
+    display: none;
+  }
+}
+
+@media (max-width: 1100px) {
+  .nav-links {
+    display: none;
+  }
+
+  .hamburger {
+    display: block;
+  }
+}
+
+/* HERO SPLIT LAYOUT */
+.hero-split {
+  width: 100%;
+  height: 65vh;
+  display: flex;
+  background-color: #f9f9f7;
+}
+
+/* LEFT TEXT SIDE */
+.hero-text {
+  flex: 0 0 35%;
+  display: flex;
+  align-items: center;
+  padding: 4rem;
+}
+
+.hero-text h1 {
+  font-size: 2.6rem;
+  font-weight: 500;
+  color: black;
+  line-height: 1.2;
+  max-width: 420px;
   
 }
 
-.apply-btn {
-  background-color: #708d81; /* olive green */
-  color: #fff;
-  border: none;
-  padding: 0.9rem 2rem;
-  font-size: 1.05rem;
-  border-radius: 2rem;
-  cursor: pointer;
-  font-weight: 600;
-  letter-spacing: 0.5px;
-  transition: all 0.3s ease;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+/* RIGHT IMAGE SIDE */
+.hero-image {
+  flex: 0 0 65%;
+  background-size: cover;
+  background-position: center;
 }
 
-/* Hover effect */
-.apply-btn:hover {
-  background-color: #5e7a6f; /* slightly darker olive */
-  transform: translateY(-2px);
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.15);
-}
-
-/* Active (click) state */
-.apply-btn:active {
-  transform: translateY(0);
-  box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
-}
-
-
-/* Tablet/Desktop adjustments */
-@media (min-width: 769px) {
-  .hero-content h1 {
-    font-size: 2.5rem;
+/* ---------- RESPONSIVE ---------- */
+@media (max-width: 768px) {
+  .hero-split {
+    flex-direction: column;
+    height: auto;
   }
-  .apply-btn {
-    font-size: 1.25rem;
-    padding: 1rem 2rem;
+
+  .hero-text {
+    order: 2;
+    padding: 2rem;
+  }
+
+  .hero-text h1 {
+    font-size: 1.9rem;
+  }
+
+  .hero-image {
+    order: 1;
+    height: 45vh;
+    width: 100%;
   }
 }
 
-/* Teaser Banner */
+/* ---------- TABLET HERO REVERT ---------- */
+@media (max-width: 1024px) {
+  .hero-split {
+    position: relative;
+    height: 55vh;
+    flex-direction: column;
+  }
+
+  /* Make image behave like background */
+  .hero-image {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+  }
+
+  .hero-image::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.45); /* overlay for readability */
+  }
+
+  /* Center text on top */
+  .hero-text {
+    position: relative;
+    z-index: 2;
+    flex: none;
+    height: 100%;
+    width: 100%;
+    padding: 2rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+  }
+
+  .hero-text h1 {
+    max-width: 600px;
+    font-size: 2.2rem;
+    color: white;
+  }
+}
+
+
+
+
+/* Teaser section */
 .teaser-banner {
   width: 100%;
-  height: 50vh; /* adjust height as needed */
-  background-size: cover;
-  background-position: center;
-  display: flex;
-  justify-content: center; /* centers content vertically */
-  align-items: center;     /* centers content horizontally */
-  margin-top: 7rem;
+  background-color: #fbf7ec;
+  padding: 6rem 0;
   margin-bottom: 5rem;
-  color: black;
 }
 
-/* Teaser Content */
-.teaser-content {
+/* Inner layout */
+.teaser-inner {
+  width: 90%;
+  max-width: 1200px;
+  margin: 0 auto;
+
   display: flex;
-  flex-direction: column; /* stack heading, text, image */
-  justify-content: center; /* center within content block */
-  align-items: center;     /* center horizontally */
-  max-width: 700px;        /* keeps text from stretching too wide */
-  text-align: center;      /* centers heading and paragraph text */
+  align-items: center;
+  gap: 4rem;
 }
 
-/* Teaser Heading */
-#teaser-title {
-  font-size: 2.5rem;
-  margin-bottom: 1rem;
-  color: black;
-  
+/* Image column */
+.teaser-image {
+  flex: 1;
+  display: flex;
+  justify-content: center;
 }
 
-/* Teaser Paragraph */
-#teaser-des {
-  font-size: 1rem;
-  margin-bottom: 1.5rem;
-  color: black;
-}
-
-/* Teaser Image */
-.teaser-photo {
+.teaser-image img {
   width: 100%;
-  max-width: 600px;
+  max-width: 450px;
   height: auto;
   border-radius: 0.5rem;
+  object-fit: cover;
 }
 
+/* Text column */
+.teaser-text {
+  flex: 1.2; /* slightly more space for text */
+}
 
-/* the underline itself */
-#teaser-title::after {
-  content: "";
-  display: block;
-  width: 5rem;
-  height: 0.2rem;
-  background-color: #708D81; /* olive green accent */
-  margin: 0.5rem auto 0;      /* top 0.5rem, left/right auto, bottom 0 */
-  border-radius: 2px;
+.teaser-text h2 {
+  font-size: 2.2rem;
+  margin-bottom: 1rem;
+}
+
+.teaser-text p {
+  font-size: 1.05rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #333;
+}
+
+@media (max-width: 900px) {
+  .teaser-inner {
+    flex-direction: column-reverse; /* ⬅️ this flips the order */
+    text-align: center;
+  }
+
+  .teaser-text {
+    flex: unset;
+  }
+
+  .teaser-image img {
+    max-width: 100%;
+  }
 }
 
 
@@ -358,6 +539,8 @@ header {
   width: 100%;
   padding: 3rem 1rem;
   text-align: center;
+  
+  margin-bottom: 5rem;
 
 }
 
@@ -448,8 +631,9 @@ header {
 .amenities {
   width: 100%;
   padding: 3rem 1rem;
-  
+  background-color: #fbf7ec;
   text-align: center;
+  margin-bottom: 5rem;
 }
 
 .amenities-title {
@@ -495,10 +679,36 @@ header {
   border-radius: 2px;
 }
 
+.amenities-btn-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 2rem;
+}
+
+.apply-btn {
+    display: inline-block; /* or block */
+  margin-top: 2rem;
+  background-color: #708d81; /* olive green */
+  color: #fff;
+  border: none;
+  padding: 0.9rem 2rem;
+  font-size: 1.05rem;
+  border-radius: 2rem;
+  cursor: pointer;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  text-decoration: none;
+}
+
+
+
 /* Gallery */
 .gallery-section {
   padding: 3rem 1rem;
-  
+  background-color: #fbf7ec;
+  margin-bottom: 5rem;
 }
 
 .gallery-section h2 {
@@ -520,6 +730,15 @@ header {
 
 
 /* Map */
+.map-address {
+  margin-top: 1.25rem;
+  text-align: center;
+  color: #333;
+  font-weight: 600;
+  background-color: #fbf7ec;
+  margin-bottom: 5rem;
+}
+
 .map-section {
   padding: 3rem 1rem;
   
@@ -573,12 +792,18 @@ header {
 }
 
 /* Contact Us */
+.map-section {
+  background-color: #fbf7ec;
+  margin-bottom: 5rem;
+}
+
 .contact-section {
   width: 100%;
   padding: 4rem 1rem;
-  
+  background-color: #fbf7ec;
   text-align: center;
   margin-top: 1rem;
+  margin-bottom: 5rem;
 }
 
 .contact-title {
@@ -776,7 +1001,7 @@ header {
 .contact-triangle {
   width: 100%;
   padding: 3rem 1rem;
-  background-color: #ffffff; /* white background */
+  background-color: #fbf7ec;
   text-align: center;
 }
 
@@ -786,6 +1011,7 @@ header {
   margin-bottom: 2rem;
   color: #333;
   position: relative;
+  
 }
 
 /* Underline for the header */
@@ -828,6 +1054,37 @@ header {
   font-size: 2rem;
   color: #708D81;
   margin-bottom: 0.5rem;
+}
+
+/* Layout wrapper (default: stacked like you have now) */
+.contact-triangle-layout {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Desktop+: title left, triangle right */
+@media (min-width: 992px) {
+  .contact-triangle {
+    text-align: left; /* title becomes left-aligned on desktop */
+  }
+
+  .contact-triangle-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr; /* left text, right triangle */
+    align-items: center;
+    column-gap: 2rem;
+  }
+
+  /* Keep underline aligned left on desktop */
+  .contact-triangle-title::after {
+    margin-left: 0;
+    margin-right: 0;
+  }
+
+  /* Right side should still look centered as a group */
+  .contact-triangle-right {
+    text-align: center;
+  }
 }
 
 
@@ -903,7 +1160,15 @@ header {
   font-size: 1rem;
 }
 
+
 /* Amenities button */
+.amenities-btn {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+text-decoration: none;
+}
+
 .amenities-btn {
   margin-top: 1rem;
   padding: 0.7rem 1.4rem;
@@ -1446,4 +1711,314 @@ font-size: 1.5rem;
 .section-description {
 font-size: 0.9rem;
 }
+}
+
+/*amenities modal fix*/
+.amenities-modal ul {
+list-style: disc;
+padding-left: 1.25rem;
+margin: 0;
+text-align: left;
+}
+
+.amenities-modal li {
+text-align: left;
+}
+
+/* =========================================================
+   GLOBAL POLISH PATCH — paste at the END of App.css
+   Goal: color bands + consistent spacing + less “empty”
+   ========================================================= */
+
+:root{
+  --bg-cream: #fbf7ec;      /* your current warm cream */
+  --bg-sage:  #eef3f1;      /* soft sage */
+  --bg-blue:  #eef2f6;      /* soft blue */
+  --bg-white: #ffffff;
+  --text-soft: #555;
+}
+
+/* 1) Fix overly-wide layouts: keep content centered on desktop */
+.page-main,
+.container-fluid {
+  max-width: 1200px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Helpful horizontal padding so content doesn't hug edges */
+.page-main,
+.container-fluid {
+  padding-left: 1rem;
+  padding-right: 1rem;
+}
+
+/* 2) Consistent section spacing */
+.hero-split,
+.teaser-banner,
+.floorplans,
+.amenities,
+.gallery-section,
+.map-section,
+.contact-section,
+.contact-triangle,
+.properties-section {
+  padding-top: 4rem;
+  padding-bottom: 4rem;
+}
+
+/* Mobile: tighten vertical spacing */
+@media (max-width: 768px) {
+  .hero-split,
+  .teaser-banner,
+  .floorplans,
+  .amenities,
+  .gallery-section,
+  .map-section,
+  .contact-section,
+  .contact-triangle,
+  .properties-section {
+    padding-top: 2.5rem;
+    padding-bottom: 2.5rem;
+  }
+}
+
+/* 3) Color bands — alternate backgrounds so it feels designed */
+/* Keep hero as-is (it has its own) */
+.teaser-banner { background: var(--bg-cream) !important; }
+.floorplans    { background: var(--bg-white) !important; }
+.amenities     { background: var(--bg-blue)  !important; }
+.gallery-section { background: var(--bg-cream) !important; }
+.map-section   { background: var(--bg-sage)  !important; }
+.contact-section { background: var(--bg-white) !important; }
+.contact-triangle { background: var(--bg-cream) !important; }
+
+/* 4) Make section text blocks readable (prevents super wide paragraphs) */
+.amenities-text,
+.contact-text,
+.section-description,
+.teaser-text p {
+  max-width: 720px;
+  margin-left: auto;
+  margin-right: auto;
+  line-height: 1.7;
+  color: var(--text-soft);
+}
+
+/* 5) Give cards a consistent “finished” feel */
+.floorplan-card,
+.plan-card,
+.portfolio-card {
+  border: 1px solid rgba(0,0,0,0.06);
+}
+
+.floorplan-card,
+.plan-card,
+.portfolio-card,
+.map-container {
+  border-radius: 14px;
+}
+
+/* 6) Consistent underline spacing (yours are good—just unify margins) */
+.floorplans-title,
+.amenities-title,
+.contact-title,
+.contact-triangle-title,
+.gallery-section h2,
+.map-section h2,
+.section-title {
+  margin-bottom: 1.5rem;
+}
+
+/* 7) Remove surprise “extra” margins that create awkward gaps */
+.map-address { 
+  background-color: transparent !important; 
+  margin-bottom: 0 !important;
+}
+
+.map-section { 
+  margin-bottom: 0 !important; 
+}
+
+.contact-section {
+  margin-top: 0 !important;
+}
+
+/* 8) Buttons: ensure link buttons don’t show highlight blocks */
+.apply-btn,
+.apply-btn-plans,
+.apply-btn-map,
+.portfolio-btn {
+  text-decoration: none;
+  outline: none;
+}
+
+.apply-btn:focus,
+.apply-btn-plans:focus,
+.apply-btn-map:focus,
+.portfolio-btn:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+/* Optional: nicer focus state for accessibility (keep if you want) */
+/*
+.apply-btn:focus-visible,
+.apply-btn-plans:focus-visible,
+.apply-btn-map:focus-visible,
+.portfolio-btn:focus-visible {
+  outline: 3px solid rgba(112, 141, 129, 0.35);
+  outline-offset: 3px;
+}
+*/
+
+/* ===== NAV: stop desktop rules repeating/fighting ===== */
+@media (min-width: 1000px) {
+  .nav-links { display: flex !important; }
+  .hamburger { display: none !important; }
+}
+
+/* Mobile always hides desktop nav */
+@media (max-width: 999px) {
+  .nav-links { display: none !important; }
+  .hamburger { display: block !important; }
+}
+
+.teaser-banner,
+.floorplans,
+.amenities,
+.gallery-section,
+.map-section,
+.contact-section,
+.contact-triangle {
+  border-top: 1px solid rgba(0,0,0,0.05);
+}
+.contact-triangle {
+  background-color: white;
+}
+
+/* NEW AMENITIES STUFF */
+/* Wrap the lists and align width with image grid */
+.amenities-lists {
+  margin-top: 2.25rem;
+  display: grid;
+  gap: 2rem;
+  justify-content: center;
+}
+
+/* Category title (NOT bulleted) */
+.amenities-category {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #333;
+  margin: 0 0 0.75rem 0;
+  text-align: left;
+}
+
+/* Always 2 columns, including mobile */
+.amenities-bullets {
+  list-style: disc;
+  padding-left: 1.25rem;
+  margin: 0;
+
+  display: grid;
+  grid-template-columns: 1fr 1fr; /* ✅ 2 columns on mobile too */
+  column-gap: 2.5rem;
+  row-gap: 0.75rem;
+
+  text-align: left;
+}
+
+/* Optional: if the screen is SUPER tiny, you can force 1 col.
+   If you truly want 2 columns ALWAYS, delete this block. */
+@media (max-width: 360px) {
+  .amenities-bullets {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* Make bullets align with your centered image grid width */
+.amenities-lists,
+.amenities-list {
+  width: 100%;
+  max-width: 650px; /* tweak to match your image grid footprint */
+}
+
+/* If your image grid is fixed to 2 x 300px on desktop,
+   you can lock this to match it exactly: */
+@media (min-width: 768px) {
+  .amenities-lists,
+  .amenities-list {
+    max-width: 650px; /* ~ 300 + 300 + gap */
+  }
+}
+
+/* Desktop: center amenities lists */
+@media (min-width: 768px) {
+  .amenities-lists {
+    max-width: 800px;        /* keeps it aligned with images */
+    margin: 3rem auto 0;     /* centers the whole block */
+    text-align: center;
+  }
+
+  .amenities-list {
+    margin-bottom: 2.5rem;
+  }
+
+  .amenities-category {
+    text-align: center;
+  }
+
+  .amenities-bullets {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr); /* 2 points per row */
+    gap: 0.75rem 2rem;
+    justify-content: center;
+    padding-left: 0;         /* remove default ul indent */
+    list-style-position: inside;
+  }
+
+  .amenities-bullet {
+    text-align: left;        /* keeps bullets readable */
+  }
+}
+
+@media (min-width: 992px) {
+  .contact-triangle-layout {
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    align-items: center;
+    column-gap: 2rem;
+  }
+
+  .contact-triangle-title {
+    margin-left: 3rem;
+  }
+}
+
+/* VACANCIES */
+.vacancies-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+}
+
+.vacancies-instructions {
+  background-color: #fbf7ec;
+  padding: 2.5rem;
+  border-radius: 1rem;
+  margin-bottom: 3rem;
+  text-align: center;
+}
+
+.vacancies-instructions h2 {
+  font-size: 2rem;
+  margin-bottom: 1rem;
+}
+
+.vacancies-instructions p {
+  max-width: 600px;
+  margin: 0 auto;
+  color: #555;
+  line-height: 1.6;
 }

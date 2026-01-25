@@ -50,7 +50,7 @@ const heroImageUrl = urlFor(data.backgroundImage)?.width(1600).url() || '/placeh
 
 return (
 <div className="page-wrapper">
-<Header />
+<Header navTitle="Castle Rock Managment"/>
 
 <section
 className="portfolio-hero"

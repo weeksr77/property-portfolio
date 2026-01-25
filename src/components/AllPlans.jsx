@@ -30,8 +30,8 @@ function AllPlans({ data }) {
             </button>
 
             {plan.virtualTourUrl && (
-              <a href={plan.virtualTourUrl} target="_blank" rel="noreferrer">
-                <button className="amenities-btn">View Virtual Tour</button>
+              <a href={plan.virtualTourUrl} target="_blank"rel="noreferrer"className="amenities-btn">
+                View Virtual Tour
               </a>
             )}
           </div>

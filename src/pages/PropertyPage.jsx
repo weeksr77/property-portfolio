@@ -28,6 +28,8 @@ function PropertyPage() {
     .fetch(
       `*[_type == "property" && slug.current == $slug][0]{
         title,
+        navTitle,
+        slug,
         heroTitle,
         heroImage,
         "teaser": {
@@ -45,7 +47,10 @@ function PropertyPage() {
     },
         amenities,
         gallery,
-        floorplans
+        floorplans,
+        location,
+        mapEmbedUrl,
+        googleMapsUrl
       }`,
       { slug }
     )
@@ -74,7 +79,10 @@ function PropertyPage() {
 
   return (
     <div className="page-wrapper">
-      <Header propertySlug={property?.slug?.current || null} />
+      <Header
+  propertySlug={property?.slug?.current || null}
+  navTitle={property?.navTitle || property?.title || ""}
+/>
 
 
       <Hero 
@@ -84,10 +92,12 @@ function PropertyPage() {
 
       <main className="page-main container-fluid">
         <Teaser data={property.teaser} />
-        <Plans data={property.floor} />
+        <Plans data={property.floor}
+               propertySlug={property.slug.current}
+        />
         <Amenities data={property.amenities} />
         <Gallery images={property.formattedGallery} />
-        <Map />
+        <Map address={property.location} embedUrl={property.mapEmbedUrl} mapsUrl={property.googleMapsUrl}/>
         <Contact />
         <ContactInfo />
       </main>

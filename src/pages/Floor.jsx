@@ -8,32 +8,36 @@ import AllPlans from '../components/AllPlans'
 
 function Floor() {
   const { slug } = useParams()
+  const [propertyTitle, setPropertyTitle] = useState(" ")
   const [floorplans, setFloorplans] = useState([])
 
   useEffect(() => {
-    sanityClient.fetch(
-      `*[_type == "property" && slug.current == $slug][0]{
-        floorplans[]->{
-          name,
-          price,
-          "imageUrl": image.asset->url,
-          virtualTourUrl,
-          amenities
-        }
-      }`,
-      { slug }
-    )
-    .then(data => setFloorplans(data?.floorplans || []))
-    .catch(console.error)
+    sanityClient
+      .fetch(
+        `*[_type == "property" && slug.current == $slug][0]{
+          title,
+          floorplans[]->{
+            name,
+            price,
+            "imageUrl": image.asset->url,
+            virtualTourUrl,
+            amenities
+          }
+        }`,
+        { slug }
+      )
+      .then((data) => {
+        setPropertyTitle(data?.title || " ")
+        setFloorplans(data?.floorplans || [])
+      })
+      .catch(console.error)
   }, [slug])
 
-  if (!floorplans.length) {
-    return <p style={{ padding: 40 }}>Loading floorplans…</p>
-  }
+  if (!floorplans.length) return <p style={{ padding: 40 }}>Loading floorplans…</p>
 
   return (
     <>
-      <Header />
+      <Header propertySlug={slug} navTitle={propertyTitle} />
       <AllPlans data={floorplans} />
       <Footer />
     </>
@@ -41,6 +45,7 @@ function Floor() {
 }
 
 export default Floor
+
 
 
 /*import Header from '../components/Header';

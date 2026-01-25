@@ -2,18 +2,20 @@ import { urlFor } from '../imageUrl'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
 function Hero({ title, image }) {
-  const heroStyle = image
-    ? {
-        backgroundImage: `url(${urlFor(image).width(2000).url()})`,
-      }
-    : {}
-
   return (
-    <section className="hero-banner" style={heroStyle}>
-      <div className="hero-content">
+    <section className="hero-split">
+      <div className="hero-text">
         <h1>{title}</h1>
-        <button className="apply-btn">Apply Now</button>
       </div>
+
+      {image && (
+        <div
+          className="hero-image"
+          style={{
+            backgroundImage: `url(${urlFor(image).width(2000).url()})`,
+          }}
+        />
+      )}
     </section>
   )
 }

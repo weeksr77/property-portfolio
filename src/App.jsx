@@ -8,6 +8,7 @@ import Location from './pages/Location'
 import AllAmenities from './pages/AllAmenities'
 import ContactUs from './pages/ContactUs'
 import PortfolioPage from './pages/PortfolioPage'
+import Vacancies from './pages/vacancies'
 
 
 function App() {
@@ -26,10 +27,17 @@ function App() {
 
         {/* Optional static pages */}
       
-        <Route path="/location" element={<Location />} />
+        <Route path="/property/:slug/location" element={<Location />} />
         <Route path="/property/:slug/amenities" element={<AllAmenities />} />
 
+        <Route path="/property/:slug/contact" element={<ContactUs />} />
+
+        <Route path="/vacancies" element={<Vacancies />} />
+
+        <Route path="/location" element={<Location />} />
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/amenities" element={<AllAmenities />} />
+        <Route path="/floor" element={<Floor />} />
 
       </Routes>
     </BrowserRouter>

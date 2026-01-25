@@ -2,7 +2,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
 import { urlFor } from '../imageUrl';
 
-function Floor({ data }) {
+function Floor({ data, propertySlug }) {
   if (!data || data.length === 0) return <p>No floor data available.</p>;
 
   return (
@@ -23,7 +23,8 @@ function Floor({ data }) {
           </div>
         ))}
       </div>
-      <Link to="/floor" className="apply-btn-plans">
+      
+      <Link to={`/property/${propertySlug}/floor`} className="apply-btn-plans">
         View Floorplans
       </Link>
     </section>
