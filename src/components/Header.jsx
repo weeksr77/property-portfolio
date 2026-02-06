@@ -15,7 +15,7 @@ return (
 <div className="top-bar">
   <div className="top-bar-content">
     <a href="tel:+1234567890" className="top-bar-phone">
-      (540) 662-6300
+      (540) 667-6300
     </a>
 
     <div className="top-bar-links">
