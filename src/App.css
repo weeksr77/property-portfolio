@@ -1416,7 +1416,7 @@ footer {
     max-width: 1400px;
     margin: 0 auto;
     padding: 0 2rem;
-
+    margin-top: 2rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -1443,12 +1443,14 @@ footer {
     display: flex;
     gap: 1.2rem;
     align-items: center;
+    margin-top: 1rem;
   }
 
   /* Resize/home icon styling for desktop */
   .home-icon svg {
     font-size: 1.8rem;
     color: white;
+    margin-top: 1rem;
   }
 
   /* Phone icon on right — larger and white */
@@ -1493,6 +1495,11 @@ footer {
   }
 }
 
+@media (max-width: 1000px) {
+.header-content {
+padding-top: 1rem;
+}
+}
 /* Big phones */
 @media (min-width: 480px) { 
           /* Make header content wider and push items apart */
