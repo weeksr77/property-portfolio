@@ -15,7 +15,7 @@ function ContactInfo() {
           <div className="contact-triangle-row">
             <div className="contact-triangle-item">
               <FaPhone className="contact-icon" />
-              <p>+1 (540) 662-6300</p>
+              <p>+1 (540) 667-6300</p>
             </div>
             <div className="contact-triangle-item">
               <FaEnvelope className="contact-icon" />
@@ -26,7 +26,7 @@ function ContactInfo() {
           <div className="contact-triangle-single">
             <div className="contact-triangle-item">
               <FaMapMarkerAlt className="contact-icon" />
-              <p>SO Bellview Ave, Winchester, VA, 22601</p>
+              <p>5O Bellview Ave, Winchester, VA, 22601</p>
             </div>
           </div>
         </div>
