@@ -1,28 +1,62 @@
-import { useState } from "react";
-import AmenitiesModal from "./AmenitiesModal";
-import "bootstrap/dist/css/bootstrap.min.css";
+import { useState } from "react"
+import AmenitiesModal from "./AmenitiesModal"
+import "bootstrap/dist/css/bootstrap.min.css"
 
-function AllPlans({ data }) {
+import ImageGallery from "react-image-gallery"
+import "react-image-gallery/styles/css/image-gallery.css"
+import { urlFor } from "../imageUrl"
+
+function AllPlans({ data = [], gallery = [] }) {
   const [selectedAmenities, setSelectedAmenities] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false)
 
-  if (!data?.length) return <p>Loading...</p>
+  if (!data?.length) return <p style={{ padding: 40 }}>Loading floorplans…</p>
+
+  const hasGallery = Array.isArray(gallery) && gallery.length > 0
 
   return (
     <section className="allplans">
       <h2 className="allplans-title">Our Floor Plans</h2>
 
+      {/* ✅ TOP PAGE GALLERY (property-level) */}
+      {hasGallery && (
+        <div className="unit-gallery-wrapper">
+          <ImageGallery
+            items={gallery.map((img) => ({
+              original: urlFor(img).width(1400).url(),
+              thumbnail: urlFor(img).width(300).url(),
+            }))}
+            showPlayButton={false}
+            showFullscreenButton={true}
+            showThumbnails={false}
+            showBullets={true}
+            showIndex={false}
+            autoPlay={false}
+            slideInterval={5000}
+            lazyLoad={true}
+          />
+        </div>
+      )}
+
       <div className="allplans-grid">
         {data.map((plan, index) => (
           <div key={index} className="plan-card">
-            <img src={plan.imageUrl} alt={plan.name} className="plan-img" />
+            {plan.imageUrl && (
+              <img
+                src={plan.imageUrl}
+                alt={plan.name || "Floorplan"}
+                className="plan-img"
+              />
+            )}
+
             <h3 className="plan-name">{plan.name}</h3>
-            <p className="plan-price">{plan.price}</p>
+
+            {plan.price && <p className="plan-price">{plan.price}</p>}
 
             <button
               className="amenities-btn"
               onClick={() => {
-                setSelectedAmenities(plan.amenities)
+                setSelectedAmenities(plan.amenities || [])
                 setIsModalOpen(true)
               }}
             >
@@ -30,7 +64,12 @@ function AllPlans({ data }) {
             </button>
 
             {plan.virtualTourUrl && (
-              <a href={plan.virtualTourUrl} target="_blank"rel="noreferrer"className="amenities-btn">
+              <a
+                href={plan.virtualTourUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="amenities-btn"
+              >
                 View Virtual Tour
               </a>
             )}
@@ -47,8 +86,7 @@ function AllPlans({ data }) {
   )
 }
 
-export default AllPlans;
-
+export default AllPlans
 
 /*import { useState } from "react";
 import AmenitiesModal from "./AmenitiesModal";

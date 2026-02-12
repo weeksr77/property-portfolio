@@ -1,27 +1,30 @@
-import { useEffect, useState } from 'react'
-import { useParams } from 'react-router-dom'
-import sanityClient from '../sanityClient'
+import { useEffect, useState } from "react"
+import { useParams } from "react-router-dom"
+import sanityClient from "../sanityClient"
 
-import Header from '../components/Header'
-import Footer from '../components/Footer'
-import AllPlans from '../components/AllPlans'
+import Header from "../components/Header"
+import Footer from "../components/Footer"
+import AllPlans from "../components/AllPlans"
 
 function Floor() {
   const { slug } = useParams()
   const [propertyTitle, setPropertyTitle] = useState(" ")
   const [floorplans, setFloorplans] = useState([])
+  const [unitGallery, setUnitGallery] = useState([])
 
   useEffect(() => {
     sanityClient
       .fetch(
         `*[_type == "property" && slug.current == $slug][0]{
           title,
+          unitGallery,
           floorplans[]->{
             name,
             price,
             "imageUrl": image.asset->url,
             virtualTourUrl,
-            amenities
+            amenities,
+            unitPhotos
           }
         }`,
         { slug }
@@ -29,23 +32,24 @@ function Floor() {
       .then((data) => {
         setPropertyTitle(data?.title || " ")
         setFloorplans(data?.floorplans || [])
+        setUnitGallery(data?.unitGallery || [])
       })
       .catch(console.error)
   }, [slug])
 
+  // Optional: show title even if no floorplans yet
   if (!floorplans.length) return <p style={{ padding: 40 }}>Loading floorplans…</p>
 
   return (
     <>
       <Header propertySlug={slug} navTitle={propertyTitle} />
-      <AllPlans data={floorplans} />
+      <AllPlans data={floorplans} gallery={unitGallery} />
       <Footer />
     </>
   )
 }
 
 export default Floor
-
 
 
 /*import Header from '../components/Header';

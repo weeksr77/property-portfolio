@@ -9,7 +9,7 @@ import AllAmenities from './pages/AllAmenities'
 import ContactUs from './pages/ContactUs'
 import PortfolioPage from './pages/PortfolioPage'
 import Vacancies from './pages/vacancies'
-
+import GalleryPage from './pages/GalleryPage'
 
 function App() {
   return (
@@ -32,12 +32,15 @@ function App() {
 
         <Route path="/property/:slug/contact" element={<ContactUs />} />
 
+        <Route path="/property/:slug/gallery" element={<GalleryPage />} />
+
         <Route path="/vacancies" element={<Vacancies />} />
 
         <Route path="/location" element={<Location />} />
         <Route path="/contact" element={<ContactUs />} />
         <Route path="/amenities" element={<AllAmenities />} />
         <Route path="/floor" element={<Floor />} />
+        
 
       </Routes>
     </BrowserRouter>

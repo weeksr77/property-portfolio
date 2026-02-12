@@ -1,6 +1,24 @@
 /* Base full-height setup */
 @import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Poppins:wght@500;700&display=swap');
 
+/* ✅ Reset global links so third-party widgets don't explode */
+a {
+  color: inherit;
+  background: transparent;
+  border: 0;
+  text-decoration: none;
+}
+
+/* Keep your hover behavior reasonable */
+a:hover {
+  text-decoration: underline;
+}
+
+/* ✅ Keep button styling for real buttons */
+button {
+  border: none;
+}
+
 html, body, #root {
   height: 100%;
   margin: 0;
@@ -1106,6 +1124,57 @@ header {
   z-index: 999;
 }
 
+/* keep overlay fixed as you already have */
+.amenities-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.45);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+  padding: 1rem; /* important for small screens */
+}
+
+/* modal box: constrain height */
+.amenities-modal {
+  background: white;
+  width: 90%;
+  max-width: 500px;
+
+  /* ✅ key: limit height so it never goes off-screen */
+  max-height: calc(100vh - 2rem);
+
+  border-radius: 1rem;
+  position: relative;
+  display: flex;
+  flex-direction: column; /* header stays, body can scroll */
+}
+
+/* ✅ scrollable content area */
+.amenities-modal-body {
+  overflow-y: auto;
+  padding: 2rem;
+}
+
+/* if you currently have padding on .amenities-modal, move it to the body */
+.amenities-modal {
+  padding: 0; /* optional if you move padding to body */
+}
+
+/* optional: keep close button visible */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 18px;
+  background: none;
+  border: none;
+  font-size: 2rem;
+  color: #444;
+  cursor: pointer;
+  z-index: 2;
+}
+
 /* Modal box */
 .amenities-modal {
   background: white;
@@ -2028,4 +2097,269 @@ text-align: left;
   margin: 0 auto;
   color: #555;
   line-height: 1.6;
+}
+
+/*  NEW APFOLIO STUFF   */
+
+.vacancies-section{
+  width: 100%;
+  padding: 3rem 1rem;
+  text-align: center;
+}
+
+.vacancies-title{
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 1rem;
+}
+
+.vacancies-title::after{
+  content:"";
+  display:block;
+  width:5rem;
+  height:0.2rem;
+  background-color:#708D81;
+  margin:0.5rem auto 0;
+  border-radius:2px;
+}
+
+.vacancies-text{
+  max-width: 800px;
+  margin: 0 auto 2rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.vacancies-boxes{
+  width: 90%;
+  max-width: 1000px;
+  margin: 0 auto 2rem;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+}
+
+@media (min-width: 768px){
+  .vacancies-boxes{
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+.vacancies-box{
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+  text-align: left;
+}
+
+.vacancies-box-title{
+  margin: 0 0 0.5rem;
+  color: #708D81;
+  font-size: 1.1rem;
+  font-weight: 700;
+}
+
+.vacancies-box-text{
+  margin: 0;
+  color: #333;
+  line-height: 1.5;
+}
+
+.appfolio-widget{
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+.vacancies-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 1rem;
+}
+
+.vacancies-instructions {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.vacancies-widget {
+  position: relative;
+  z-index: 1;
+}
+
+#appfolio-listings {
+  min-height: 520px; /* gives it space even before load */
+}
+
+.vacancies-widget {
+  position: relative;
+  z-index: 1;
+}
+
+.vacancies-instructions {
+  position: relative;
+  z-index: 2;
+}
+
+.vacancies-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.vacancies-instructions {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem 1.25rem;
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 2;
+}
+
+.vacancies-widget {
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+.vacancies-section {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem 1rem;
+}
+
+.vacancies-instructions {
+  background: #fff;
+  border-radius: 12px;
+  padding: 1.25rem;
+  margin-bottom: 1.5rem;
+}
+
+.appfolio-iframe {
+  width: 100%;
+  height: 750px; /* adjust as needed */
+  border: 0;
+  border-radius: 12px;
+  background: #fff;
+}
+
+/* NEW PHOTO STUFF FOR FLOORPLANS */
+
+.plan-gallery {
+  width: 100%;
+  margin: 1rem 0;
+  border-radius: 0.75rem;
+  overflow: hidden;
+}
+
+.plan-gallery .image-gallery-slide img {
+  width: 100%;
+  height: 260px;      /* tweak */
+  object-fit: cover;
+}
+
+@media (min-width: 768px) {
+  .plan-gallery .image-gallery-slide img {
+    height: 220px;
+  }
+}
+
+/*new gallery for floorplans page */
+
+.units-gallery-section {
+  width: 100%;
+  padding: 3rem 1rem;
+  text-align: center;
+  background-color: #fbf7ec;
+  margin-bottom: 5rem;
+}
+
+.units-gallery-title {
+  font-size: 2rem;
+  color: #333;
+  margin-bottom: 2rem;
+  position: relative;
+}
+
+.units-gallery-title::after {
+  content: "";
+  display: block;
+  width: 5rem;
+  height: 0.2rem;
+  background-color: #708D81;
+  margin: 0.5rem auto 0;
+  border-radius: 2px;
+}
+
+.units-gallery {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* Floor page top gallery */
+.unit-gallery-wrapper {
+  max-width: 500px;        /* controls width */
+  margin: 0 auto 3rem;     /* centers + spacing below */
+}
+
+.unit-gallery-wrapper .image-gallery-slide img {
+  max-height: 200px;       /* controls height */
+  object-fit: cover;       /* keeps it clean */
+  border-radius: 12px;
+}
+
+.unit-gallery-wrapper .image-gallery {
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Smaller, centered top gallery */
+.unit-gallery-wrapper {
+  max-width: 900px;
+  margin: 0 auto 2.5rem; /* space under gallery */
+  border-radius: 12px;
+  overflow: hidden;
+}
+
+/* Make the gallery not “huge” */
+.unit-gallery-wrapper .image-gallery-slide img {
+  max-height: 380px;
+  width: 100%;
+  object-fit: cover;
+}
+
+/* On small screens, keep it shorter */
+@media (max-width: 768px) {
+  .unit-gallery-wrapper {
+    max-width: 100%;
+    margin: 0 auto 2rem;
+  }
+
+  .unit-gallery-wrapper .image-gallery-slide img {
+    max-height: 260px;
+  }
+}
+
+/* FIXES FOR THE FUNKY IMAGES */
+/* Portfolio card image consistency */
+.portfolio-img {
+  width: 100%;
+  height: 220px;          /* pick a consistent height */
+  object-fit: cover;      /* crop to fill the box */
+  object-position: center;/* keep crop centered */
+  border-radius: 6px;
+  display: block;
+}
+
+.portfolio-card {
+  display: flex;
+  flex-direction: column;
+}
+
+.portfolio-description {
+  flex: 1;               /* pushes button to bottom */
+}
+
+.portfolio-btn {
+  margin-top: auto;      /* keep button aligned across cards */
 }

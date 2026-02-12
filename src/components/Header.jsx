@@ -75,6 +75,15 @@ className="nav-link"
 >
 Amenities
 </Link>
+
+<Link
+  to={`/property/${propertySlug}/gallery`}
+  className="nav-link"
+>
+  Gallery
+</Link>
+
+
 </>
 )}
 
@@ -127,6 +136,16 @@ onClick={handleLinkClick}
 >
 Amenities
 </Link>
+
+<Link
+  to={`/property/${propertySlug}/gallery`}
+  className="mobile-link"
+  onClick={handleLinkClick}
+>
+  Gallery
+</Link>
+
+
 </>
 )}
 
