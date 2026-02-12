@@ -69,7 +69,7 @@ function Vacancies() {
           <iframe
             title="AppFolio Listings"
             className="appfolio-iframe"
-            srcDoc={iframeSrcDoc}
+            src="/appfolio.html"
             sandbox="allow-scripts allow-forms allow-popups allow-popups-to-escape-sandbox"
           />
         </section>
