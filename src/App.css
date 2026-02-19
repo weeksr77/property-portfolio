@@ -9,6 +9,14 @@ a {
   text-decoration: none;
 }
 
+/* Remove underline globally */
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none !important;
+}
+
 /* Keep your hover behavior reasonable */
 a:hover {
   text-decoration: underline;
@@ -1255,6 +1263,19 @@ text-decoration: none;
   background: #5f786f;
 }
 
+/* Add spacing between stacked buttons inside floorplan cards */
+.plan-card .amenities-btn {
+  display: inline-block;
+  margin-top: 0.75rem;
+}
+
+/* Add extra space only when a button follows another button */
+.plan-card .amenities-btn + .amenities-btn {
+  margin-left: 0.75rem;
+}
+
+
+
 
 
 
@@ -2362,4 +2383,77 @@ text-align: left;
 
 .portfolio-btn {
   margin-top: auto;      /* keep button aligned across cards */
+}
+
+/* floorplan card gallery */
+/* --- per-card unit photo strip --- */
+.plan-photo-strip {
+  margin-top: 0.75rem;
+  display: flex;
+  gap: 0.6rem;
+  overflow-x: auto;
+  padding-bottom: 0.35rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.plan-photo-strip::-webkit-scrollbar {
+  height: 8px;
+}
+
+.plan-photo-strip::-webkit-scrollbar-thumb {
+  border-radius: 999px;
+}
+
+/* button reset + consistent thumb box */
+.plan-photo-thumb {
+  border: none;
+  padding: 0;
+  background: transparent;
+  cursor: pointer;
+  flex: 0 0 auto;
+  border-radius: 0.6rem;
+  overflow: hidden;
+  width: 120px;       /* ✅ controls thumb width */
+  height: 85px;       /* ✅ controls thumb height */
+}
+
+/* keep images consistent */
+.plan-photo-thumb img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;  /* ✅ standardizes “same size” look */
+  display: block;
+}
+
+/* --- lightbox modal for unit gallery --- */
+.unitgallery-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.unitgallery-modal {
+  width: min(920px, 92vw);
+  max-height: 90vh;
+  background: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  position: relative;
+  overflow: auto;
+}
+
+.unitgallery-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  background: transparent;
+  border: none;
+  font-size: 2rem;
+  line-height: 1;
+  cursor: pointer;
+  color: #333;
 }
