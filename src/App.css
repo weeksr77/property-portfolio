@@ -9,6 +9,11 @@ a {
   text-decoration: none;
 }
 
+/* ✅ Critical: prevents padding from making cards wider than the screen */
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
 /* Remove underline globally */
 a,
 a:hover,
@@ -1263,16 +1268,8 @@ text-decoration: none;
   background: #5f786f;
 }
 
-/* Add spacing between stacked buttons inside floorplan cards */
-.plan-card .amenities-btn {
-  display: inline-block;
-  margin-top: 0.75rem;
-}
 
-/* Add extra space only when a button follows another button */
-.plan-card .amenities-btn + .amenities-btn {
-  margin-left: 0.75rem;
-}
+
 
 
 
@@ -2386,74 +2383,56 @@ text-align: left;
 }
 
 /* floorplan card gallery */
-/* --- per-card unit photo strip --- */
-.plan-photo-strip {
-  margin-top: 0.75rem;
-  display: flex;
-  gap: 0.6rem;
-  overflow-x: auto;
-  padding-bottom: 0.35rem;
-  -webkit-overflow-scrolling: touch;
-}
-
-.plan-photo-strip::-webkit-scrollbar {
-  height: 8px;
-}
-
-.plan-photo-strip::-webkit-scrollbar-thumb {
-  border-radius: 999px;
-}
-
-/* button reset + consistent thumb box */
-.plan-photo-thumb {
-  border: none;
-  padding: 0;
-  background: transparent;
-  cursor: pointer;
-  flex: 0 0 auto;
-  border-radius: 0.6rem;
-  overflow: hidden;
-  width: 120px;       /* ✅ controls thumb width */
-  height: 85px;       /* ✅ controls thumb height */
-}
-
-/* keep images consistent */
-.plan-photo-thumb img {
+.plan-card {
   width: 100%;
-  height: 100%;
-  object-fit: cover;  /* ✅ standardizes “same size” look */
+  max-width: 100%;
+  overflow: hidden; /* prevents children from forcing width */
+}
+
+.plan-photo-strip {
+  display: flex;
+  gap: 0.5rem;
+  overflow-x: auto;        /* ⬅️ allow horizontal scroll */
+  overflow-y: hidden;
+  max-width: 100%;
+  padding-bottom: 0.5rem;
+
+  -webkit-overflow-scrolling: touch; /* smooth mobile scroll */
+}
+
+.plan-photo-thumb {
+  flex: 0 0 auto;          /* ⬅️ critical */
+  border: none;
+  background: none;
+  padding: 0;
+}
+
+.plan-photo-thumb img {
+  width: 80px;
+  height: 80px;
+  object-fit: cover;
+  border-radius: 6px;
   display: block;
 }
 
-/* --- lightbox modal for unit gallery --- */
-.unitgallery-overlay {
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.55);
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  z-index: 10000;
+/* Default (mobile-first): stacked buttons, natural width */
+.plan-card .amenities-btn {
+  display: block;          /* stack */
+  width: fit-content;      /* only as wide as content */
+  margin: 0.75rem auto 0;  /* space + center horizontally */
+  text-align: center;
 }
 
-.unitgallery-modal {
-  width: min(920px, 92vw);
-  max-height: 90vh;
-  background: white;
-  border-radius: 1rem;
-  padding: 1rem;
-  position: relative;
-  overflow: auto;
-}
+/* Desktop: inline with spacing */
+@media (min-width: 768px) {
+  .plan-card .amenities-btn {
+    display: inline-flex;
+    width: auto;
+    margin: 0.75rem 0 0 0;
+  }
 
-.unitgallery-close {
-  position: absolute;
-  top: 10px;
-  right: 14px;
-  background: transparent;
-  border: none;
-  font-size: 2rem;
-  line-height: 1;
-  cursor: pointer;
-  color: #333;
+  /* Add spacing only between buttons */
+  .plan-card .amenities-btn + .amenities-btn {
+    margin-left: 0.75rem;
+  }
 }
