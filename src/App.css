@@ -2436,3 +2436,35 @@ text-align: left;
     margin-left: 0.75rem;
   }
 }
+
+.unitgallery-overlay{
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+}
+
+.unitgallery-modal{
+  width: min(920px, 92vw);
+  max-height: 90vh;
+  background: white;
+  border-radius: 1rem;
+  padding: 1rem;
+  position: relative;
+  overflow: auto;
+}
+
+/* Fix unit gallery close button */
+.unitgallery-close {
+  background: transparent !important;
+  color: #333 !important;
+  border: none !important;
+  padding: 0 !important;
+  width: auto !important;
+  height: auto !important;
+  display: block;
+  text-align: right;
+}
