@@ -34,7 +34,11 @@ function App() {
 
         <Route path="/property/:slug/gallery" element={<GalleryPage />} />
 
-        <Route path="/vacancies" element={<Vacancies />} />
+              {/* Applicants (global + property-specific) */}
+      <Route path="/vacancies" element={<Vacancies />} />                 {/* keep if you already link here */}
+      <Route path="/applicants" element={<Vacancies />} />               {/* optional alias */}
+      <Route path="/property/:slug/vacancies" element={<Vacancies />} />  {/* property-specific */}
+      <Route path="/property/:slug/applicants" element={<Vacancies />} /> {/* optional alias */}
 
         <Route path="/location" element={<Location />} />
         <Route path="/contact" element={<ContactUs />} />

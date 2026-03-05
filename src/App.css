@@ -2468,3 +2468,54 @@ text-align: left;
   display: block;
   text-align: right;
 }
+
+
+/*NEW FLOORPLANS HOME PAGE SECTION*/
+/* ✅ CSS additions (paste near your floorplans section styles) */
+
+.floorplans-subtitle {
+  max-width: 650px;
+  margin: 0 auto 1.5rem;
+  color: #555;
+  font-weight: 600;
+}
+
+/* Walk-through callout section */
+.walkthrough-callout {
+  width: 100%;
+  padding: 3rem 1rem;
+  background: #ffffff;
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.walkthrough-inner {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.walkthrough-title {
+  font-size: 1.9rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.walkthrough-text {
+  max-width: 700px;
+  margin: 0 auto 1.5rem;
+  color: #555;
+  line-height: 1.6;
+}
+
+.walkthrough-btn {
+  display: inline-block;
+  background-color: #708d81;
+  color: #fff;
+  padding: 0.9rem 2rem;
+  border-radius: 2rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+.walkthrough-btn:hover {
+  background-color: #5f756b;
+}

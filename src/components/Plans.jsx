@@ -1,4 +1,59 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+// ✅ React: Plans.jsx (replace with this)
+// This now renders REAL floorplan cards + Virtual Tour buttons + subtitle line.
+import "bootstrap/dist/css/bootstrap.min.css"
+import { Link } from "react-router-dom"
+
+function Plans({ data = [], propertySlug, subtitle }) {
+  // data = property.floorplans[] (real floorplans)
+  if (!Array.isArray(data) || data.length === 0) return null
+
+  return (
+    <section className="floorplans">
+      <h2 className="floorplans-title">Our Floor Plans</h2>
+
+      {subtitle && <p className="floorplans-subtitle">{subtitle}</p>}
+
+      <div className="floorplans-row">
+        {data.map((plan, idx) => (
+          <div key={idx} className="floorplan-card">
+            {plan.imageUrl && (
+              <img
+                src={plan.imageUrl}
+                alt={plan.name || "Floor Plan"}
+                className="floorplan-img"
+              />
+            )}
+
+            {plan.name && <h3>{plan.name}</h3>}
+            {plan.price && <p>{plan.price}</p>}
+
+            {/* ✅ Virtual Tour button per card */}
+            {plan.virtualTourUrl && (
+              <a
+                href={plan.virtualTourUrl}
+                target="_blank"
+                rel="noreferrer"
+                className="amenities-btn"
+              >
+                View Virtual Tour
+              </a>
+            )}
+          </div>
+        ))}
+      </div>
+
+      {propertySlug && (
+        <Link to={`/property/${propertySlug}/floor`} className="apply-btn-plans">
+          View Floorplans
+        </Link>
+      )}
+    </section>
+  )
+}
+
+export default Plans
+
+/*import 'bootstrap/dist/css/bootstrap.min.css';
 import { Link } from "react-router-dom";
 import { urlFor } from '../imageUrl';
 
@@ -31,7 +86,7 @@ function Floor({ data, propertySlug }) {
   );
 }
 
-export default Floor;
+export default Floor;*/
 
 
 

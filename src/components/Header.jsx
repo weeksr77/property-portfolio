@@ -21,7 +21,9 @@ return (
     <div className="top-bar-links">
       <a href="https://castlerockmanagementllc.appfolio.com/connect/users/sign_in?portfolio_uuid=cb0facc2-f943-11f0-86d6-023e3c77b63c">Resident Portal</a>
       <span>|</span>
-      <Link to="/vacancies"> Applicants</Link>
+      <Link to={propertySlug ? `/property/${propertySlug}/vacancies` : "/vacancies"}>
+  Applicants
+</Link>
     </div>
   </div>
 </div>
