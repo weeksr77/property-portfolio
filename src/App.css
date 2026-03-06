@@ -2519,3 +2519,51 @@ text-align: left;
 .walkthrough-btn:hover {
   background-color: #5f756b;
 }
+
+/* Vacencies stuff*/
+.vacancies-instructions p {
+  white-space: pre-line;
+}
+
+.vacancies-instructions {
+  max-width: 800px;
+  margin: 0 auto 2.5rem auto;
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+.vacancies-instructions h2 {
+  margin-bottom: 1rem;
+}
+
+.vacancies-instructions p {
+  max-width: 650px;
+  margin: 0 auto;
+  line-height: 1.6;
+  white-space: pre-line; /* preserves Sanity line breaks */
+}
+
+/* Crop Fix */
+.amenities-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 1.25rem;
+  justify-items: center;
+}
+
+.amenity-item {
+  width: 100%;
+  max-width: 320px;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+  border-radius: 12px;
+  background: #fff;
+}
+
+.amenity-item img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block; 
+}
