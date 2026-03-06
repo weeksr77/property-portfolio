@@ -17,7 +17,7 @@ function Amenities({ title = 'Amenities', lists = [], data = [] }) {
             {data.map((img, i) => (
               <div key={i} className="amenity-item">
                 <img
-                  src={urlFor(img).width(300).height(200).url()}
+                  src={urlFor(img).width(900).height(675).fit("crop").url()}
                   alt={`Amenity ${i + 1}`}
                 />
               </div>
