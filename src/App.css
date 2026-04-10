@@ -43,7 +43,8 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 :root {
-  --primary-color: #6B9080;
+  /*--primary-color: #6B9080;*/
+  --primary-color:  #01426A;
   --background-color: #F4F6F5;
   --text-color: #2E2E2E;
   --accent-color: #A4C3B2;
@@ -619,7 +620,7 @@ header {
 .apply-btn-plans {
   display: inline-block; /* or block */
   margin-top: 2rem;
-  background-color: #708d81; /* olive green */
+  background-color:  #01426A; /* olive green */
   color: #fff;
   border: none;
   padding: 0.9rem 2rem;
@@ -653,7 +654,7 @@ header {
   display: block;
   width: 5rem;
   height: 0.2rem;
-  background-color: #708D81; /* olive green accent */
+  background-color: #01426A; /* olive green accent */
   margin: 0.5rem auto 0;      /* top 0.5rem, left/right auto, bottom 0 */
   border-radius: 2px;
 }
@@ -705,7 +706,7 @@ header {
   display: block;
   width: 5rem;
   height: 0.2rem;
-  background-color: #708D81; /* olive green accent */
+  background-color: #01426A; /* olive green accent */
   margin: 0.5rem auto 0;      /* top 0.5rem, left/right auto, bottom 0 */
   border-radius: 2px;
 }
@@ -719,7 +720,7 @@ header {
 .apply-btn {
     display: inline-block; /* or block */
   margin-top: 2rem;
-  background-color: #708d81; /* olive green */
+  background-color: #01426A; /* olive green */
   color: #fff;
   border: none;
   padding: 0.9rem 2rem;
@@ -754,7 +755,7 @@ header {
   display: block;
   width: 5rem;
   height: 0.2rem;
-  background-color: #708D81; /* olive green accent */
+  background-color: #01426A; /* olive green accent */
   margin: 0.5rem auto 0;      /* top 0.5rem, left/right auto, bottom 0 */
   border-radius: 2px;
 }
@@ -801,14 +802,14 @@ header {
   display: block;
   width: 5rem;
   height: 0.2rem;
-  background-color: #708D81; /* olive green accent */
+  background-color: #01426A; /* olive green accent */
   margin: 0.5rem auto 0;      /* top 0.5rem, left/right auto, bottom 0 */
   border-radius: 2px;
 }
 
 .apply-btn-map {
   display: inline-block; /* or block */
-  background-color: #708d81; /* olive green */
+  background-color: #01426A; /* olive green */
   color: #fff;
   border: none;
   padding: 0.9rem 2rem;
@@ -856,7 +857,7 @@ header {
   display: block;
   width: 5rem;
   height: 0.2rem;
-  background-color: #708D81; /* olive green accent */
+  background-color: #01426A; /* olive green accent */
   margin: 0.5rem auto 0;      /* top 0.5rem, left/right auto, bottom 0 */
   border-radius: 2px;
 }
@@ -882,7 +883,7 @@ header {
   display: block;
   width: 5rem;
   height: 0.2rem;
-  background-color: #708D81; /* olive accent */
+  background-color: #01426A; /* olive accent */
   margin: 0.5rem auto 0;
   border-radius: 2px;
 }
@@ -925,7 +926,7 @@ header {
 .contact-btn {
   display: block;
   margin: 0 auto;
-  background-color: #708d81; /* olive green */
+  background-color: #01426A; /* olive green */
   color: #fff;
   border: none;
   padding: 0.9rem 2rem;
@@ -939,7 +940,7 @@ header {
 }
 
 .contact-btn:hover {
-  background-color: #5f756b;
+  background-color: #01426A;
 }
 
 /* Responsive adjustments */
@@ -970,7 +971,7 @@ header {
   display: block;
   width: 5rem;
   height: 0.25rem;
-  background-color: #708D81; /* olive accent */
+  background-color: #01426A; /* olive accent */
   margin: 0.75rem auto 0;
   border-radius: 10px;
 }
@@ -1013,7 +1014,7 @@ header {
 .plan-price {
   font-size: 1.1rem;
   font-weight: 600;
-  color: #708D81;
+  color: #01426A;
 }
 
 /* 2 columns on tablets+ */
@@ -1051,7 +1052,7 @@ header {
   display: block;
   width: 5rem;
   height: 0.2rem;
-  background-color: #708D81; /* olive green */
+  background-color: #01426A; /* olive green */
   margin: 0.5rem auto 0;
   border-radius: 2px;
 }
@@ -1083,7 +1084,7 @@ header {
 /* Icons */
 .contact-icon {
   font-size: 2rem;
-  color: #708D81;
+  color: #01426A;
   margin-bottom: 0.5rem;
 }
 
@@ -1230,7 +1231,7 @@ header {
   display: block;
   width: 4rem;
   height: 0.25rem;
-  background-color: #708D81;
+  background-color: #01426A;
   margin: 0.6rem auto 0;
   border-radius: 10px;
 }
@@ -1254,7 +1255,7 @@ text-decoration: none;
 .amenities-btn {
   margin-top: 1rem;
   padding: 0.7rem 1.4rem;
-  background: #708D81;
+  background: #01426A;
   color: #fff;
   border: none;
   border-radius: 1.5rem;
@@ -1719,7 +1720,7 @@ padding: 50px 20px;
 
 .section-title {
 font-size: 2rem;
-color: #708D81;; /* standard green */
+color: #01426A; /* standard green */
 margin-bottom: 10px;
 position: relative;
 display: inline-block;
@@ -1730,7 +1731,7 @@ content: '';
 display: block;
 width: 50px;
 height: 4px;
-background-color: #708D81;
+background-color: #01426A;
 margin: 10px auto 0;
 border-radius: 2px;
 }
@@ -1768,7 +1769,7 @@ border-radius: 6px;
 .portfolio-title {
 font-size: 1.25rem;
 margin: 15px 0 10px;
-color: #708D81;
+color: #01426A;
 }
 
 .portfolio-description {
@@ -1779,7 +1780,7 @@ margin-bottom: 15px;
 
 .portfolio-btn {
 display: inline-block;
-background-color: #708D81;
+background-color: #01426A;
 color: #fff;
 padding: 10px 20px;
 border-radius: 4px;
@@ -1789,7 +1790,7 @@ transition: background-color 0.2s;
 }
 
 .portfolio-btn:hover {
-background-color: #708D81;
+background-color: #01426A;
 }
 
 /* Responsive adjustments */
@@ -1825,11 +1826,15 @@ text-align: left;
    ========================================================= */
 
 :root{
-  --bg-cream: #fbf7ec;      /* your current warm cream */
-  --bg-sage:  #eef3f1;      /* soft sage */
-  --bg-blue:  #eef2f6;      /* soft blue */
-  --bg-white: #ffffff;
+  /*--bg-cream: #fbf7ec;*/      /* your current warm cream */
+  /*--bg-sage:  #eef3f1;*/      /* soft sage */
+  /*--bg-blue:  #eef2f6;*/     /* soft blue */
+  /*--bg-white: #ffffff;*/
   --text-soft: #555;
+  --bg-cream:  #FFD100;
+  --bg-sage:  #FFD100;
+  --bg-blue:  #FFD100;
+  --bg-white: #FFD100;
 }
 
 /* 1) Fix overly-wide layouts: keep content centered on desktop */
@@ -2136,7 +2141,7 @@ text-align: left;
   display:block;
   width:5rem;
   height:0.2rem;
-  background-color:#708D81;
+  background-color:#01426A;
   margin:0.5rem auto 0;
   border-radius:2px;
 }
@@ -2173,7 +2178,7 @@ text-align: left;
 
 .vacancies-box-title{
   margin: 0 0 0.5rem;
-  color: #708D81;
+  color: #01426A;
   font-size: 1.1rem;
   font-weight: 700;
 }
@@ -2304,7 +2309,7 @@ text-align: left;
   display: block;
   width: 5rem;
   height: 0.2rem;
-  background-color: #708D81;
+  background-color: #01426A;
   margin: 0.5rem auto 0;
   border-radius: 2px;
 }
@@ -2509,7 +2514,7 @@ text-align: left;
 
 .walkthrough-btn {
   display: inline-block;
-  background-color: #708d81;
+  background-color: #01426A;
   color: #fff;
   padding: 0.9rem 2rem;
   border-radius: 2rem;
@@ -2517,7 +2522,7 @@ text-align: left;
   text-decoration: none;
 }
 .walkthrough-btn:hover {
-  background-color: #5f756b;
+  background-color: #01426A;
 }
 
 /* Vacencies stuff*/
