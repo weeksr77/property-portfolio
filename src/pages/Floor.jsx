@@ -24,7 +24,9 @@ function Floor() {
             "imageUrl": image.asset->url,
             virtualTourUrl,
             amenities,
-            unitPhotos
+            unitPhotos,
+            utilitiesIncluded,
+            tenantResponsibleFor
           }
         }`,
         { slug }

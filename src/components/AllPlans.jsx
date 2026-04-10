@@ -88,6 +88,23 @@ function AllPlans({ data = [], gallery = [] }) {
 
               <h3 className="plan-name">{plan.name}</h3>
               {plan.price && <p className="plan-price">{plan.price}</p>}
+              {(plan.utilitiesIncluded || plan.tenantResponsibleFor) && (
+  <div className="plan-utilities">
+    {plan.utilitiesIncluded && (
+      <p className="plan-utilities-line">
+        <span className="plan-utilities-label">Utilities Included:</span>{" "}
+        {plan.utilitiesIncluded}
+      </p>
+    )}
+
+    {plan.tenantResponsibleFor && (
+      <p className="plan-utilities-line">
+        <span className="plan-utilities-label">Tenant Pays:</span>{" "}
+        {plan.tenantResponsibleFor}
+      </p>
+    )}
+  </div>
+)}
 
               <button
                 className="amenities-btn"

@@ -2567,3 +2567,23 @@ text-align: left;
   object-position: center;
   display: block; 
 }
+
+/* Floorplans added utilities section*/
+.plan-utilities {
+  margin-top: 0.85rem;
+  margin-bottom: 0.5rem;
+  text-align: center;   /* ✅ center everything */
+  line-height: 1.6;
+}
+
+.plan-utilities-line {
+  margin: 0.35rem 0;
+  color: #555;
+  font-size: 0.98rem;
+  white-space: pre-line;
+}
+
+.plan-utilities-label {
+  font-weight: 700;
+  color: #333;
+}

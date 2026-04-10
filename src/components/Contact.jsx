@@ -1,31 +1,53 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
+import { useState } from "react"
+import 'bootstrap/dist/css/bootstrap.min.css'
 
 function Contact() {
+  const [status, setStatus] = useState("")
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+
+    const formData = new FormData(e.target)
+
+    const response = await fetch("https://api.web3forms.com/submit", {
+      method: "POST",
+      body: formData,
+    })
+
+    const data = await response.json()
+
+    if (data.success) {
+      setStatus("success")
+      e.target.reset()
+    } else {
+      setStatus("error")
+    }
+  }
+
   return (
     <section className="contact-section">
       <h2 className="contact-title">Contact Us</h2>
 
-      <form
-        className="contact-form"
-        action="https://api.web3forms.com/submit"
-        method="POST"
-      >
+      <form className="contact-form" onSubmit={handleSubmit}>
         {/* Web3Forms hidden fields */}
         <input
           type="hidden"
           name="access_key"
-          value="250d37f4-0c4c-4868-a2a4-4acae3799bad"
+          value="dab76883-20e4-406a-9814-5971416a18b4"
         />
-        <input type="hidden" name="subject" value="New Contact Form Submission" />
-        <input type="hidden" name="redirect" value="https://www.serebii.net/pokedex-rs/121.shtml" />
+        <input
+          type="hidden"
+          name="subject"
+          value="New Contact Form Submission"
+        />
 
-        {/* Row 1: first + last name */}
+        {/* Row 1 */}
         <div className="form-row">
           <input type="text" name="first_name" placeholder="First Name" className="form-input" required />
           <input type="text" name="last_name" placeholder="Last Name" className="form-input" required />
         </div>
 
-        {/* Message box */}
+        {/* Message */}
         <textarea
           name="message"
           placeholder="Your message..."
@@ -34,21 +56,33 @@ function Contact() {
           required
         ></textarea>
 
-        {/* Row 3: email + phone */}
+        {/* Row 3 */}
         <div className="form-row">
           <input type="email" name="email" placeholder="Email" className="form-input" required />
           <input type="tel" name="phone" placeholder="Phone Number" className="form-input" />
         </div>
 
-        {/* Submit button */}
+        {/* Submit */}
         <button className="apply-btn contact-btn" type="submit">
           Send Message
         </button>
+
+        {/* ✅ Success / Error message */}
+        {status === "success" && (
+          <p style={{ color: "green", marginTop: "1rem" }}>
+            Message sent successfully!
+          </p>
+        )}
+
+        {status === "error" && (
+          <p style={{ color: "red", marginTop: "1rem" }}>
+            Something went wrong. Please try again.
+          </p>
+        )}
       </form>
     </section>
-  );
+  )
 }
 
-export default Contact;
-
+export default Contact
 
