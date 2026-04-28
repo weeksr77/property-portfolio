@@ -401,7 +401,7 @@ header {
   width: 100%;
   height: 65vh;
   display: flex;
-  background-color: #f9f9f7;
+  background-color: #01426A;
 }
 
 /* LEFT TEXT SIDE */
@@ -415,7 +415,7 @@ header {
 .hero-text h1 {
   font-size: 2.6rem;
   font-weight: 500;
-  color: black;
+  color: white;
   line-height: 1.2;
   max-width: 420px;
   
@@ -1033,7 +1033,7 @@ header {
 .contact-triangle {
   width: 100%;
   padding: 3rem 1rem;
-  background-color: #fbf7ec;
+  background-color: #01426A;
   text-align: center;
 }
 
@@ -1041,7 +1041,7 @@ header {
 .contact-triangle-title {
   font-size: 2rem;
   margin-bottom: 2rem;
-  color: black;
+  color: white;
   position: relative;
   
 }
@@ -1052,7 +1052,7 @@ header {
   display: block;
   width: 5rem;
   height: 0.2rem;
-  background-color: #01426A; /* olive green */
+  background-color: white; /* olive green */
   margin: 0.5rem auto 0;
   border-radius: 2px;
 }
@@ -1078,13 +1078,13 @@ header {
   flex-direction: column;
   align-items: center;
   font-size: 1.1rem;
-  color: black;
+  color: white;
 }
 
 /* Icons */
 .contact-icon {
   font-size: 2rem;
-  color: #01426A;
+  color: white;
   margin-bottom: 0.5rem;
 }
 
@@ -1111,6 +1111,7 @@ header {
   .contact-triangle-title::after {
     margin-left: 0;
     margin-right: 0;
+    color: white;
   }
 
   /* Right side should still look centered as a group */
@@ -1993,7 +1994,7 @@ text-align: left;
   border-top: 1px solid rgba(0,0,0,0.05);
 }
 .contact-triangle {
-  background-color: white;
+  background-color: #01426A;
 }
 
 /* NEW AMENITIES STUFF */
@@ -2646,7 +2647,7 @@ background-color: #FFD100 !important;
 }
 
 .contact-triangle {
-background-color: #ffffff !important;
+background-color: #01426A !important;
 }
 
 /* Optional: keep section spacing consistent */
@@ -2675,4 +2676,178 @@ padding-bottom: 4rem;
 padding-top: 2.5rem;
 padding-bottom: 2.5rem;
 }
+}
+
+/* Last fixes for 4/28/2026*/
+.header-content {
+display: flex;
+align-items: center;
+justify-content: space-between;
+
+width: min(96%, 1600px);
+margin: 0 auto;
+padding: 0 3rem;
+
+gap: clamp(3rem, 8vw, 10rem);
+}
+
+.left-icons {
+display: flex;
+align-items: center;
+gap: 1rem;
+flex-shrink: 0;
+}
+
+.nav-links {
+margin-left: auto !important;
+display: flex;
+gap: 1.5rem;
+}
+
+@media (min-width: 1400px) {
+.header-content {
+max-width: 2100px !important;
+width: 92% !important;
+padding: 0 3rem !important;
+}
+
+.nav-links {
+margin-left: auto !important;
+}
+}
+
+/* Make teaser layout stretch properly */
+.teaser-inner {
+display: flex;
+align-items: stretch; /* key */
+}
+
+/* Let image column match text height */
+.teaser-image {
+flex: 1;
+display: flex;
+}
+
+/* Make image fill the container */
+.teaser-image img {
+width: 100%;
+height: 100%;
+object-fit: cover; /* keeps it looking clean */
+max-width: none; /* remove old cap */
+}
+
+/* Spread teaser text + image apart */
+.teaser-inner {
+display: flex;
+align-items: stretch;
+
+gap: 3rem; /* 👈 main spacing between text + image */
+max-width: 1200px;
+margin: 0 auto;
+}
+
+/* Give the layout more breathing room on wide screens */
+@media (min-width: 1200px) {
+.teaser-inner {
+max-width: 1400px;
+gap: 4rem;
+}
+}
+
+/* Even more space on very wide monitors */
+@media (min-width: 1600px) {
+.teaser-inner {
+max-width: 1600px;
+gap: 5rem;
+}
+}
+
+/* Align amenities content perfectly */
+.amenities-content {
+max-width: 720px;
+margin: 0 auto;
+text-align: center;
+}
+
+/* Remove conflicting centering from text */
+.amenities-text {
+margin: 0 0 2rem 0 !important;
+}
+
+/* Wide desktop amenities alignment fix */
+@media (min-width: 1024px) {
+.amenities-content {
+max-width: 900px !important;
+margin: 0 auto !important;
+text-align: center !important;
+}
+
+.amenities-title,
+.amenities-text,
+.amenities-btn-wrapper {
+max-width: 700px !important;
+margin-left: auto !important;
+margin-right: auto !important;
+text-align: center !important;
+}
+
+.amenities-text {
+margin-bottom: 2rem !important;
+margin-left: 0;
+}
+}
+.teaser-text p {
+  margin-left: 0;
+}
+
+/* Remove awkward gaps between sections */
+.floorplans {
+margin-bottom: 0 !important;
+padding-bottom: 3rem !important;
+}
+
+.amenities {
+margin-top: 0 !important;
+padding-top: 3rem !important;
+}
+
+.gallery-section {
+margin-top: 0 !important;
+padding-top: 3rem !important;
+}
+
+/* Remove the gray divider line */
+.floorplans,
+.amenities,
+.gallery-section {
+border-top: none !important;
+}
+
+/* Remove all section divider lines */
+.teaser-banner,
+.floorplans,
+.amenities,
+.gallery-section,
+.map-section,
+.contact-section,
+.contact-triangle {
+border-top: none !important;
+}
+
+/* =========================================
+Amenities Lists - Full Width Yellow Band
+========================================= */
+
+.amenities-lists {
+background-color: #FFD100 !important;
+
+/* Full width breakout */
+width: 100vw;
+max-width: 100vw;
+margin-left: calc(50% - 50vw);
+margin-right: calc(50% - 50vw);
+
+/* Spacing */
+padding: 3rem 1.5rem;
+margin-top: 2rem;
 }

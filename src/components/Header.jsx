@@ -56,7 +56,7 @@ onClick={() => setMenuOpen(prev => !prev)}
 {/* Desktop navigation */}
 <nav className="nav-links">
 <Link to={propertySlug ? `/property/${propertySlug}` : '/'}
- className="nav-link">Home</Link>
+ className="nav-link" id='home'>Home</Link>
 
 {/* ✅ ALWAYS visible */}
 <Link to="/" className="nav-link">Properties</Link>
