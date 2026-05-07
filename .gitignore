@@ -23,3 +23,5 @@ seo-update-notes.txt
 *.njsproj
 *.sln
 *.sw?
+
+*.psd
