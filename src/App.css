@@ -2851,3 +2851,10 @@ margin-right: calc(50% - 50vw);
 padding: 3rem 1.5rem;
 margin-top: 2rem;
 }
+
+/* Keep full-width color bands connected without wrapper gaps */
+.page-main.container-fluid {
+max-width: none !important;
+padding: 0 !important;
+margin: 0 !important;
+}
