@@ -55,8 +55,10 @@ onClick={() => setMenuOpen(prev => !prev)}
 
 {/* Desktop navigation */}
 <nav className="nav-links">
-<Link to={propertySlug ? `/property/${propertySlug}` : '/'}
+{isPropertyPage && (
+<Link to={`/property/${propertySlug}`}
  className="nav-link" id='home'>Home</Link>
+)}
 
 {/* 🏠 Property-only links */}
 {isPropertyPage && (
@@ -112,10 +114,12 @@ Amenities
 
 {/* Mobile menu */}
 <div className={`mobile-menu ${menuOpen ? "open" : ""}`}>
-<Link to={propertySlug ? `/property/${propertySlug}` : '/'}
+{isPropertyPage && (
+<Link to={`/property/${propertySlug}`}
  className="mobile-link" onClick={handleLinkClick}>
 Home
 </Link>
+)}
 
 {isPropertyPage && (
 <>
