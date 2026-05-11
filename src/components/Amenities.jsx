@@ -1,6 +1,6 @@
 import { urlFor } from '../imageUrl'
 
-function Amenities({ title = 'Amenities', lists = [], data = [] }) {
+function Amenities({ title = 'Amenities', lists = [], data = [], propertyTitle }) {
   const hasImages = Array.isArray(data) && data.length > 0
   const hasLists = Array.isArray(lists) && lists.length > 0
 
@@ -18,7 +18,7 @@ function Amenities({ title = 'Amenities', lists = [], data = [] }) {
               <div key={i} className="amenity-item">
                 <img
                   src={urlFor(img).width(900).height(675).fit("crop").url()}
-                  alt={`Amenity ${i + 1}`}
+                  alt={propertyTitle ? `${propertyTitle} amenity ${i + 1}` : `Amenity ${i + 1}`}
                 />
               </div>
             ))}

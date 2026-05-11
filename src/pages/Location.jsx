@@ -6,6 +6,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Map from '../components/Map'
 import ContactInfo from '../components/ContactInfo'
+import { applyPageMetadata, resetPageMetadata, siteUrl } from '../seo'
 
 function Location() {
   const { slug } = useParams()
@@ -36,6 +37,28 @@ function Location() {
       .catch(console.error)
       .finally(() => setLoading(false))
   }, [slug])
+
+  useEffect(() => {
+    if (!slug) {
+      applyPageMetadata({
+        title: 'Property Locations | Castle Rock Management',
+        description: 'Find Castle Rock Management apartment and townhome locations in Winchester, Stephens City, and nearby Virginia communities.',
+        url: `${siteUrl}/location`,
+      })
+
+      return resetPageMetadata
+    }
+
+    if (!property) return undefined
+
+    applyPageMetadata({
+      title: `${property.title} Location | Castle Rock Management`,
+      description: `Get directions and location details for ${property.title}. View the address, map, and Google Maps link for this Castle Rock Management property.`,
+      url: `${siteUrl}/property/${property.slug?.current || slug}/location`,
+    })
+
+    return resetPageMetadata
+  }, [property, slug])
 
   // ✅ GLOBAL LOCATION PAGE (portfolio-safe)
   if (!slug) {

@@ -4,6 +4,7 @@ import imageUrlBuilder from '@sanity/image-url'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { Link } from 'react-router-dom'
+import { applyPageMetadata, defaultImage, resetPageMetadata, siteUrl, upsertJsonLd } from '../seo'
 
 const builder = imageUrlBuilder(sanityClient)
 const urlFor = (source) => source ? builder.image(source) : null
@@ -31,6 +32,24 @@ function PortfolioPage() {
 const [data, setData] = useState(null)
 
 useEffect(() => {
+applyPageMetadata({
+title: 'Castle Rock Management | Apartments & Townhomes in Virginia',
+description: 'Explore Castle Rock Management apartments and townhomes in Winchester, Stephens City, and nearby Virginia communities.',
+url: `${siteUrl}/`,
+})
+
+upsertJsonLd('organization', {
+'@context': 'https://schema.org',
+'@type': 'Organization',
+name: 'Castle Rock Management',
+url: siteUrl,
+logo: defaultImage,
+})
+
+return resetPageMetadata
+}, [])
+
+useEffect(() => {
 sanityClient
 .fetch(`*[_type == "portfolioPage"][0]{
 backgroundImage,
@@ -50,7 +69,7 @@ const heroImageUrl = urlFor(data.backgroundImage)?.width(1600).url() || '/placeh
 
 return (
 <div className="page-wrapper">
-<Header navTitle="Castle Rock Managment"/>
+<Header navTitle="Castle Rock Management"/>
 
 <section
 className="portfolio-hero"

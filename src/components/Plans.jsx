@@ -3,7 +3,7 @@
 import "bootstrap/dist/css/bootstrap.min.css"
 import { Link } from "react-router-dom"
 
-function Plans({ data = [], propertySlug, subtitle }) {
+function Plans({ data = [], propertySlug, subtitle, propertyTitle }) {
   // data = property.floorplans[] (real floorplans)
   if (!Array.isArray(data) || data.length === 0) return null
 
@@ -19,7 +19,11 @@ function Plans({ data = [], propertySlug, subtitle }) {
             {plan.imageUrl && (
               <img
                 src={plan.imageUrl}
-                alt={plan.name || "Floor Plan"}
+                alt={
+                  propertyTitle && plan.name
+                    ? `${propertyTitle} ${plan.name} floor plan`
+                    : plan.name || "Floor Plan"
+                }
                 className="floorplan-img"
               />
             )}

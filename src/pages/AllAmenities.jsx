@@ -6,6 +6,7 @@ import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Amenities from '../components/Amenities'
 import ContactInfo from '../components/ContactInfo'
+import { applyPageMetadata, resetPageMetadata, siteUrl } from '../seo'
 
 function AllAmenities() {
   const { slug } = useParams()
@@ -33,6 +34,18 @@ function AllAmenities() {
       })
   }, [slug])
 
+  useEffect(() => {
+    if (!property) return undefined
+
+    applyPageMetadata({
+      title: `${property.title} Amenities | Castle Rock Management`,
+      description: `Explore amenities and community features at ${property.title}, including property photos and resident conveniences.`,
+      url: `${siteUrl}/property/${property.slug?.current || slug}/amenities`,
+    })
+
+    return resetPageMetadata
+  }, [property, slug])
+
   if (!slug) {
     return (
       <p style={{ padding: 40 }}>
@@ -56,6 +69,7 @@ function AllAmenities() {
             title={property.amenitiesTitle}
             lists={property.amenitiesLists}
             data={property.amenities}
+            propertyTitle={property.title}
           />
           <ContactInfo />
         </div>

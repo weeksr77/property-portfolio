@@ -5,6 +5,7 @@ import sanityClient from "../sanityClient"
 import Header from "../components/Header"
 import Footer from "../components/Footer"
 import AllPlans from "../components/AllPlans"
+import { applyPageMetadata, resetPageMetadata, siteUrl } from "../seo"
 
 function Floor() {
   const { slug } = useParams()
@@ -39,13 +40,25 @@ function Floor() {
       .catch(console.error)
   }, [slug])
 
+  useEffect(() => {
+    if (!slug) return undefined
+
+    applyPageMetadata({
+      title: `${propertyTitle.trim() || "Property"} Floor Plans | Castle Rock Management`,
+      description: `View floor plans, pricing, unit photos, utilities, and virtual tours for ${propertyTitle.trim() || "this Castle Rock Management property"}.`,
+      url: `${siteUrl}/property/${slug}/floor`,
+    })
+
+    return resetPageMetadata
+  }, [propertyTitle, slug])
+
   // Optional: show title even if no floorplans yet
   if (!floorplans.length) return <p style={{ padding: 40 }}>Loading floorplans…</p>
 
   return (
     <>
       <Header propertySlug={slug} navTitle={propertyTitle} />
-      <AllPlans data={floorplans} gallery={unitGallery} />
+      <AllPlans data={floorplans} gallery={unitGallery} propertyTitle={propertyTitle} />
       <Footer />
     </>
   )

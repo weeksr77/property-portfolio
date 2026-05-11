@@ -15,62 +15,20 @@ import Gallery from "../components/Gallery"
 import Map from "../components/Map"
 import Contact from "../components/Contact"
 import ContactInfo from "../components/ContactInfo"
+import {
+  applyPageMetadata,
+  defaultDescription,
+  defaultImage,
+  defaultTitle,
+  removeJsonLd,
+  resetPageMetadata,
+  siteUrl,
+  toMetaDescription,
+  upsertJsonLd,
+} from "../seo"
 
 const builder = imageUrlBuilder(sanityClient)
 const urlFor = (source) => builder.image(source)
-const siteUrl = "https://www.crmapartments.com"
-const defaultTitle = "Castle Rock Management | Apartments & Townhomes in Virginia"
-const defaultDescription =
-  "Explore Castle Rock Management apartments and townhomes in Virginia, including property details, floor plans, amenities, galleries, vacancies, and contact information."
-const defaultImage = `${siteUrl}/logo.png`
-
-function upsertMeta(attribute, key, content) {
-  if (!content) return
-
-  let tag = document.head.querySelector(`meta[${attribute}="${key}"]`)
-
-  if (!tag) {
-    tag = document.createElement("meta")
-    tag.setAttribute(attribute, key)
-    document.head.appendChild(tag)
-  }
-
-  tag.setAttribute("content", content)
-}
-
-function upsertCanonical(href) {
-  let tag = document.head.querySelector('link[rel="canonical"]')
-
-  if (!tag) {
-    tag = document.createElement("link")
-    tag.setAttribute("rel", "canonical")
-    document.head.appendChild(tag)
-  }
-
-  tag.setAttribute("href", href)
-}
-
-function applyPageMetadata({ title, description, image, url }) {
-  document.title = title
-  upsertCanonical(url)
-
-  upsertMeta("name", "description", description)
-  upsertMeta("property", "og:title", title)
-  upsertMeta("property", "og:description", description)
-  upsertMeta("property", "og:url", url)
-  upsertMeta("property", "og:image", image)
-  upsertMeta("name", "twitter:title", title)
-  upsertMeta("name", "twitter:description", description)
-  upsertMeta("name", "twitter:image", image)
-}
-
-function toMetaDescription(value) {
-  const description = String(value || defaultDescription).replace(/\s+/g, " ").trim()
-
-  if (description.length <= 180) return description
-
-  return `${description.slice(0, 177).trim()}...`
-}
 
 function PropertyPage() {
   const { slug } = useParams()
@@ -87,6 +45,7 @@ function PropertyPage() {
           seoDescription,
           seoImage,
           heroTitle,
+          heroText,
           heroImage,
           "teaser": {
             "title": heroText,
@@ -113,6 +72,7 @@ function PropertyPage() {
           amenities,
           gallery,
           location,
+          contactEmail,
           mapEmbedUrl,
           googleMapsUrl
         }`,
@@ -155,15 +115,42 @@ function PropertyPage() {
       description: toMetaDescription(description),
       image,
       url,
+      type: "article",
+    })
+
+    upsertJsonLd("organization", {
+      "@context": "https://schema.org",
+      "@type": "Organization",
+      name: "Castle Rock Management",
+      url: siteUrl,
+      logo: defaultImage,
+    })
+
+    upsertJsonLd("property", {
+      "@context": "https://schema.org",
+      "@type": "ApartmentComplex",
+      name: property.title,
+      description: toMetaDescription(description),
+      image,
+      url,
+      address: property.location,
+      email: property.contactEmail,
+      mainEntityOfPage: url,
+      amenityFeature: Array.isArray(property.floorplans)
+        ? property.floorplans
+            .flatMap((plan) => plan.amenities || [])
+            .filter(Boolean)
+            .slice(0, 20)
+            .map((amenity) => ({
+              "@type": "LocationFeatureSpecification",
+              name: amenity,
+            }))
+        : undefined,
     })
 
     return () => {
-      applyPageMetadata({
-        title: defaultTitle,
-        description: defaultDescription,
-        image: defaultImage,
-        url: `${siteUrl}/`,
-      })
+      resetPageMetadata()
+      removeJsonLd("property")
     }
   }, [property, slug])
 
@@ -184,7 +171,7 @@ function PropertyPage() {
       <Hero title={property.heroTitle} image={property.heroImage} />
 
       <main className="page-main container-fluid">
-        <Teaser data={property.teaser} />
+        <Teaser data={property.teaser} propertyTitle={property.title} />
 
         {/* ✅ NEW: Walk-through callout (between Teaser and Floor Plans) */}
         <section className="walkthrough-callout">
@@ -210,9 +197,10 @@ function PropertyPage() {
           data={property.floorplans || []}
           propertySlug={property.slug?.current}
           subtitle={property.floorplansSubtitle}
+          propertyTitle={property.title}
         />
 
-        <Amenities data={property.amenities} />
+        <Amenities data={property.amenities} propertyTitle={property.title} />
         <Gallery images={property.formattedGallery} />
         <Map
           address={property.location}

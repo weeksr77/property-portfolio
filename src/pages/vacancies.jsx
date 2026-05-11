@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react"
-import { useParams } from "react-router-dom"
+import { useLocation, useParams } from "react-router-dom"
 import sanityClient from "../sanityClient"
 
 import Header from "../components/Header"
 import Footer from "../components/Footer"
+import { applyPageMetadata, resetPageMetadata, siteUrl } from "../seo"
 
 function Vacancies() {
   const { slug } = useParams() // if route has :slug, this will be defined
+  const location = useLocation()
   const [cms, setCms] = useState(null)
   const [loading, setLoading] = useState(true)
 
@@ -35,6 +37,22 @@ function Vacancies() {
       .catch(console.error)
       .finally(() => setLoading(false))
   }, [slug, isPropertyApplicants])
+
+  useEffect(() => {
+    const pageUrl = `${siteUrl}${location.pathname}`
+
+    applyPageMetadata({
+      title: isPropertyApplicants
+        ? `${cms?.title || "Property"} Applications | Castle Rock Management`
+        : "Available Apartments & Townhomes | Castle Rock Management",
+      description: isPropertyApplicants
+        ? `Apply online for ${cms?.title || "a Castle Rock Management rental property"} and review available listings through AppFolio.`
+        : "Browse available Castle Rock Management apartments and townhomes in Virginia and apply online through AppFolio.",
+      url: pageUrl,
+    })
+
+    return resetPageMetadata
+  }, [cms?.title, isPropertyApplicants, location.pathname])
 
   if (loading) return <p style={{ padding: 40 }}>Loading applicants…</p>
 

@@ -6,7 +6,7 @@ import ImageGallery from "react-image-gallery"
 import "react-image-gallery/styles/css/image-gallery.css"
 import { urlFor } from "../imageUrl"
 
-function AllPlans({ data = [], gallery = [] }) {
+function AllPlans({ data = [], gallery = [], propertyTitle }) {
   const [selectedAmenities, setSelectedAmenities] = useState([])
   const [isModalOpen, setIsModalOpen] = useState(false)
 
@@ -42,14 +42,29 @@ function AllPlans({ data = [], gallery = [] }) {
             cardItems.push({
               original: plan.imageUrl,
               thumbnail: plan.imageUrl,
+              originalAlt: propertyTitle && plan.name
+                ? `${propertyTitle} ${plan.name} floor plan`
+                : plan.name || "Floorplan",
+              thumbnailAlt: propertyTitle && plan.name
+                ? `${propertyTitle} ${plan.name} floor plan thumbnail`
+                : `${plan.name || "Floorplan"} thumbnail`,
             })
           }
 
           if (Array.isArray(plan.unitPhotos) && plan.unitPhotos.length > 0) {
-            plan.unitPhotos.forEach((img) => {
+            plan.unitPhotos.forEach((img, photoIndex) => {
               const src = urlFor(img).width(1400).url()
               const thumb = urlFor(img).width(400).url()
-              cardItems.push({ original: src, thumbnail: thumb })
+              cardItems.push({
+                original: src,
+                thumbnail: thumb,
+                originalAlt: propertyTitle
+                  ? `${propertyTitle} ${plan.name || "unit"} photo ${photoIndex + 1}`
+                  : `${plan.name || "Unit"} photo ${photoIndex + 1}`,
+                thumbnailAlt: propertyTitle
+                  ? `${propertyTitle} ${plan.name || "unit"} thumbnail ${photoIndex + 1}`
+                  : `${plan.name || "Unit"} thumbnail ${photoIndex + 1}`,
+              })
             })
           }
 
@@ -61,7 +76,11 @@ function AllPlans({ data = [], gallery = [] }) {
               {plan.imageUrl && (
                 <img
                   src={plan.imageUrl}
-                  alt={plan.name || "Floorplan"}
+                  alt={
+                    propertyTitle && plan.name
+                      ? `${propertyTitle} ${plan.name} floor plan`
+                      : plan.name || "Floorplan"
+                  }
                   className="plan-img"
                 />
               )}
@@ -79,7 +98,11 @@ function AllPlans({ data = [], gallery = [] }) {
                     >
                       <img
                         src={item.thumbnail}
-                        alt={`${plan.name || "Unit"} photo ${i + 1}`}
+                        alt={
+                          propertyTitle
+                            ? `${propertyTitle} ${plan.name || "unit"} photo ${i + 1}`
+                            : `${plan.name || "Unit"} photo ${i + 1}`
+                        }
                       />
                     </button>
                   ))}

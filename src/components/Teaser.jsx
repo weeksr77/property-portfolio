@@ -1,7 +1,7 @@
 import { urlFor } from '../imageUrl'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-function Teaser({ data }) {
+function Teaser({ data, propertyTitle }) {
   if (!data) return <p>Loading teaser…</p>
 
   const { title, description, image } = data
@@ -15,7 +15,7 @@ function Teaser({ data }) {
           <div className="teaser-image">
             <img
               src={urlFor(image).width(800).url()}
-              alt={title || 'Teaser'}
+              alt={propertyTitle ? `${propertyTitle} apartment exterior or interior` : title || 'Property photo'}
             />
           </div>
         )}

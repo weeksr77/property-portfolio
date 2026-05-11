@@ -6,6 +6,7 @@ import Header from "../components/Header"
 import Footer from "../components/Footer"
 import Contact from "../components/Contact"
 import ContactInfo from "../components/ContactInfo"
+import { applyPageMetadata, resetPageMetadata, siteUrl } from "../seo"
 
 function ContactUs() {
   const { slug } = useParams()
@@ -30,6 +31,28 @@ function ContactUs() {
       .catch(console.error)
       .finally(() => setLoading(false))
   }, [slug])
+
+  useEffect(() => {
+    if (!slug) {
+      applyPageMetadata({
+        title: "Contact Castle Rock Management",
+        description: "Contact Castle Rock Management about apartments, townhomes, vacancies, applications, and property tours in Virginia.",
+        url: `${siteUrl}/contact`,
+      })
+
+      return resetPageMetadata
+    }
+
+    if (!property) return undefined
+
+    applyPageMetadata({
+      title: `Contact ${property.title} | Castle Rock Management`,
+      description: `Contact Castle Rock Management about ${property.title}, including availability, applications, property tours, and rental questions.`,
+      url: `${siteUrl}/property/${property.slug?.current || slug}/contact`,
+    })
+
+    return resetPageMetadata
+  }, [property, slug])
 
   // ✅ GLOBAL CONTACT PAGE (portfolio-safe)
   if (!slug) {
