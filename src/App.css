@@ -2882,3 +2882,20 @@ margin-top: 0 !important;
 margin-bottom: 0 !important;
 padding-bottom: 2rem !important;
 }
+
+.amenities {
+background-color: #FFD100 !important;
+margin-bottom: 0 !important;
+padding-top: 2rem !important;
+padding-bottom: 2rem !important;
+}
+
+.amenities-lists {
+background-color: transparent !important;
+width: 100% !important;
+max-width: 650px !important;
+margin-left: auto !important;
+margin-right: auto !important;
+margin-top: 1.5rem !important;
+padding: 0 !important;
+}
