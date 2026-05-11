@@ -122,9 +122,11 @@ function PropertyPage() {
         if (!data) return
 
         const formattedGallery =
-          data.gallery?.map((img) => ({
+          data.gallery?.map((img, index) => ({
             original: urlFor(img).width(1400).url(),
             thumbnail: urlFor(img).width(300).url(),
+            originalAlt: `${data.title || "Property"} photo ${index + 1}`,
+            thumbnailAlt: `${data.title || "Property"} thumbnail ${index + 1}`,
           })) || []
 
         setProperty({
