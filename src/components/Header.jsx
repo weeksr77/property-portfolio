@@ -102,7 +102,7 @@ Amenities
 </Link>
 
 {/* ✅ ALWAYS visible */}
-<Link to="/" className="nav-link">All Apartments</Link>
+<Link to="/" className="nav-link">All Properties</Link>
 </nav>
 
 {/* Phone */}
@@ -168,7 +168,7 @@ Amenities
 </Link>
 
 <Link to="/" className="mobile-link" onClick={handleLinkClick}>
-All Apartments
+All Properties
 </Link>
 </div>
 </header>
