@@ -2867,3 +2867,13 @@ margin-bottom: 0 !important;
 footer.mt-5 {
 margin-top: 0 !important;
 }
+
+.floorplans,
+.map-section {
+padding-top: 2rem !important;
+}
+
+.floorplans-title,
+.map-section h2 {
+margin-top: 0 !important;
+}
