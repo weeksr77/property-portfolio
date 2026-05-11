@@ -18,6 +18,59 @@ import ContactInfo from "../components/ContactInfo"
 
 const builder = imageUrlBuilder(sanityClient)
 const urlFor = (source) => builder.image(source)
+const siteUrl = "https://www.crmapartments.com"
+const defaultTitle = "Castle Rock Management | Apartments & Townhomes in Virginia"
+const defaultDescription =
+  "Explore Castle Rock Management apartments and townhomes in Virginia, including property details, floor plans, amenities, galleries, vacancies, and contact information."
+const defaultImage = `${siteUrl}/logo.png`
+
+function upsertMeta(attribute, key, content) {
+  if (!content) return
+
+  let tag = document.head.querySelector(`meta[${attribute}="${key}"]`)
+
+  if (!tag) {
+    tag = document.createElement("meta")
+    tag.setAttribute(attribute, key)
+    document.head.appendChild(tag)
+  }
+
+  tag.setAttribute("content", content)
+}
+
+function upsertCanonical(href) {
+  let tag = document.head.querySelector('link[rel="canonical"]')
+
+  if (!tag) {
+    tag = document.createElement("link")
+    tag.setAttribute("rel", "canonical")
+    document.head.appendChild(tag)
+  }
+
+  tag.setAttribute("href", href)
+}
+
+function applyPageMetadata({ title, description, image, url }) {
+  document.title = title
+  upsertCanonical(url)
+
+  upsertMeta("name", "description", description)
+  upsertMeta("property", "og:title", title)
+  upsertMeta("property", "og:description", description)
+  upsertMeta("property", "og:url", url)
+  upsertMeta("property", "og:image", image)
+  upsertMeta("name", "twitter:title", title)
+  upsertMeta("name", "twitter:description", description)
+  upsertMeta("name", "twitter:image", image)
+}
+
+function toMetaDescription(value) {
+  const description = String(value || defaultDescription).replace(/\s+/g, " ").trim()
+
+  if (description.length <= 180) return description
+
+  return `${description.slice(0, 177).trim()}...`
+}
 
 function PropertyPage() {
   const { slug } = useParams()
@@ -30,6 +83,9 @@ function PropertyPage() {
           title,
           navTitle,
           slug,
+          seoTitle,
+          seoDescription,
+          seoImage,
           heroTitle,
           heroImage,
           "teaser": {
@@ -78,6 +134,36 @@ function PropertyPage() {
       })
       .catch(console.error)
   }, [slug])
+
+  useEffect(() => {
+    if (!property) return undefined
+
+    const title = property.seoTitle || property.heroTitle || property.title || defaultTitle
+    const description =
+      property.seoDescription || property.teaser?.description || property.heroText || defaultDescription
+    const image = property.seoImage
+      ? urlFor(property.seoImage).width(1200).height(630).fit("crop").url()
+      : property.heroImage
+        ? urlFor(property.heroImage).width(1200).height(630).fit("crop").url()
+        : defaultImage
+    const url = `${siteUrl}/property/${property.slug?.current || slug}`
+
+    applyPageMetadata({
+      title,
+      description: toMetaDescription(description),
+      image,
+      url,
+    })
+
+    return () => {
+      applyPageMetadata({
+        title: defaultTitle,
+        description: defaultDescription,
+        image: defaultImage,
+        url: `${siteUrl}/`,
+      })
+    }
+  }, [property, slug])
 
   if (!property) return <p style={{ padding: 40 }}>Loading property…</p>
 
@@ -296,5 +382,3 @@ function PropertyPage() {
 }
 
 export default PropertyPage;*/
-
-
