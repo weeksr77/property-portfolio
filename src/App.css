@@ -2858,3 +2858,12 @@ max-width: none !important;
 padding: 0 !important;
 margin: 0 !important;
 }
+
+.contact-section,
+.contact-triangle {
+margin-bottom: 0 !important;
+}
+
+footer.mt-5 {
+margin-top: 0 !important;
+}
