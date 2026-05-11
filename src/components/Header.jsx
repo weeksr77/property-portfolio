@@ -58,9 +58,6 @@ onClick={() => setMenuOpen(prev => !prev)}
 <Link to={propertySlug ? `/property/${propertySlug}` : '/'}
  className="nav-link" id='home'>Home</Link>
 
-{/* ✅ ALWAYS visible */}
-<Link to="/" className="nav-link">Properties</Link>
-
 {/* 🏠 Property-only links */}
 {isPropertyPage && (
 <>
@@ -101,6 +98,9 @@ Amenities
 >
   Location
 </Link>
+
+{/* ✅ ALWAYS visible */}
+<Link to="/" className="nav-link">All Apartments</Link>
 </nav>
 
 {/* Phone */}
@@ -115,10 +115,6 @@ Amenities
 <Link to={propertySlug ? `/property/${propertySlug}` : '/'}
  className="mobile-link" onClick={handleLinkClick}>
 Home
-</Link>
-
-<Link to="/" className="mobile-link" onClick={handleLinkClick}>
-Properties
 </Link>
 
 {isPropertyPage && (
@@ -165,6 +161,10 @@ Amenities
   onClick={handleLinkClick}
 >
   Location
+</Link>
+
+<Link to="/" className="mobile-link" onClick={handleLinkClick}>
+All Apartments
 </Link>
 </div>
 </header>
