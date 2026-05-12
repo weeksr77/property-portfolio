@@ -224,7 +224,7 @@ function Header({ propertySlug }) {
           </nav>
 
           {/* Right side: Phone icon 
-          <a href="tel:+1234567890" className="phone-icon-2">
+          <a href="tel:+15406676300" className="phone-icon-2">
             <FaPhone className="contact-icon-2" />
           </a>
 
