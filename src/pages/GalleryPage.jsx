@@ -19,6 +19,7 @@ function GalleryPage() {
         `*[_type == "property" && slug.current == $slug][0]{
           title,
           slug,
+          contactPhone,
           gallery
         }`,
         { slug }
@@ -61,13 +62,14 @@ function GalleryPage() {
       <Header
         propertySlug={property.slug?.current}
         navTitle={property.title}
+        contactPhone={property.contactPhone}
       />
 
       <main className="page-main container-fluid">
         <Gallery images={property.formattedGallery} />
 
         {/* ✅ Add contact info below gallery */}
-        <ContactInfo />
+        <ContactInfo contactPhone={property.contactPhone} />
       </main>
 
       <Footer />

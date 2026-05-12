@@ -2,20 +2,23 @@ import { useState } from "react"
 import { Link } from "react-router-dom"
 import { FaPhone, FaHome } from "react-icons/fa"
 import "bootstrap/dist/css/bootstrap.min.css"
+import { defaultContactPhone, toTelHref } from "../phone"
 
-function Header({ propertySlug = null, navTitle = " " }) {
+function Header({ propertySlug = null, navTitle = " ", contactPhone = defaultContactPhone }) {
 const [menuOpen, setMenuOpen] = useState(false)
 const handleLinkClick = () => setMenuOpen(false)
 
 const isPropertyPage = Boolean(propertySlug)
+const displayPhone = contactPhone || defaultContactPhone
+const phoneHref = toTelHref(displayPhone)
 
 return (
 <header>
   {/* Top utility bar (desktop only) */}
 <div className="top-bar">
   <div className="top-bar-content">
-    <a href="tel:+1234567890" className="top-bar-phone">
-      (540) 667-6300
+    <a href={phoneHref} className="top-bar-phone">
+      {displayPhone}
     </a>
 
     <div className="top-bar-links">
@@ -106,7 +109,7 @@ Amenities
 </nav>
 
 {/* Phone */}
-<a href="tel:+1234567890" className="phone-icon-2">
+<a href={phoneHref} className="phone-icon-2">
 <FaPhone className="contact-icon-2" />
 </a>
 </div>

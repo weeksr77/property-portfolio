@@ -10,6 +10,7 @@ import { applyPageMetadata, resetPageMetadata, siteUrl } from "../seo"
 function Floor() {
   const { slug } = useParams()
   const [propertyTitle, setPropertyTitle] = useState(" ")
+  const [contactPhone, setContactPhone] = useState("")
   const [floorplans, setFloorplans] = useState([])
   const [unitGallery, setUnitGallery] = useState([])
 
@@ -18,6 +19,7 @@ function Floor() {
       .fetch(
         `*[_type == "property" && slug.current == $slug][0]{
           title,
+          contactPhone,
           unitGallery,
           floorplans[]->{
             name,
@@ -34,6 +36,7 @@ function Floor() {
       )
       .then((data) => {
         setPropertyTitle(data?.title || " ")
+        setContactPhone(data?.contactPhone || "")
         setFloorplans(data?.floorplans || [])
         setUnitGallery(data?.unitGallery || [])
       })
@@ -57,7 +60,7 @@ function Floor() {
 
   return (
     <>
-      <Header propertySlug={slug} navTitle={propertyTitle} />
+      <Header propertySlug={slug} navTitle={propertyTitle} contactPhone={contactPhone} />
       <AllPlans data={floorplans} gallery={unitGallery} propertyTitle={propertyTitle} />
       <Footer />
     </>

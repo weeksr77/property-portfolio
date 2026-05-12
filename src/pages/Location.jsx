@@ -27,6 +27,7 @@ function Location() {
         `*[_type == "property" && slug.current == $slug][0]{
           title,
           slug,
+          contactPhone,
           mapEmbedUrl,
           googleMapsUrl,
           location
@@ -110,6 +111,7 @@ function Location() {
       <Header
         propertySlug={property.slug?.current || null}
         navTitle={property.title || ' '}
+        contactPhone={property.contactPhone}
       />
 
       <main className="page-main container-fluid">
@@ -118,7 +120,7 @@ function Location() {
           mapsUrl={property.googleMapsUrl}
           address={property.location}
         />
-        <ContactInfo />
+        <ContactInfo contactPhone={property.contactPhone} />
       </main>
 
       <Footer />

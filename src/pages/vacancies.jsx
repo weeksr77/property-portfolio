@@ -21,6 +21,7 @@ function Vacancies() {
       ? `*[_type == "property" && slug.current == $slug][0]{
           title,
           slug,
+          contactPhone,
           applicantsTitle,
           applicantsInstructions
         }`
@@ -73,7 +74,7 @@ function Vacancies() {
 
   return (
     <div className="page-wrapper">
-      <Header propertySlug={propertySlug} navTitle={navTitle} />
+      <Header propertySlug={propertySlug} navTitle={navTitle} contactPhone={cms?.contactPhone} />
 
       <main className="page-main container-fluid">
         <section className="vacancies-section">

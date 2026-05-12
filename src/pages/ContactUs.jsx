@@ -24,7 +24,7 @@ function ContactUs() {
     setLoading(true)
     sanityClient
       .fetch(
-        `*[_type=="property" && slug.current==$slug][0]{ title, slug }`,
+        `*[_type=="property" && slug.current==$slug][0]{ title, slug, contactPhone }`,
         { slug }
       )
       .then((data) => setProperty(data || null))
@@ -99,12 +99,16 @@ function ContactUs() {
 
   return (
     <div className="page-wrapper">
-      <Header propertySlug={property.slug?.current || null} navTitle={property.title || " "} />
+      <Header
+        propertySlug={property.slug?.current || null}
+        navTitle={property.title || " "}
+        contactPhone={property.contactPhone}
+      />
 
       <main className="page-main container-fluid">
         <div className="container-fluid">
           <Contact />
-          <ContactInfo />
+          <ContactInfo contactPhone={property.contactPhone} />
         </div>
       </main>
 

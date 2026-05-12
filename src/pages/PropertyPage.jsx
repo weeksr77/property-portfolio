@@ -73,6 +73,7 @@ function PropertyPage() {
           gallery,
           location,
           contactEmail,
+          contactPhone,
           mapEmbedUrl,
           googleMapsUrl
         }`,
@@ -135,6 +136,7 @@ function PropertyPage() {
       url,
       address: property.location,
       email: property.contactEmail,
+      telephone: property.contactPhone,
       mainEntityOfPage: url,
       amenityFeature: Array.isArray(property.floorplans)
         ? property.floorplans
@@ -166,6 +168,7 @@ function PropertyPage() {
       <Header
         propertySlug={property?.slug?.current || null}
         navTitle={property?.navTitle || property?.title || ""}
+        contactPhone={property.contactPhone}
       />
 
       <Hero title={property.heroTitle} image={property.heroImage} />
@@ -208,7 +211,7 @@ function PropertyPage() {
           mapsUrl={property.googleMapsUrl}
         />
         <Contact />
-        <ContactInfo />
+        <ContactInfo contactPhone={property.contactPhone} />
       </main>
 
       <Footer />

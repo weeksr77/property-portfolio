@@ -1,7 +1,10 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { FaPhone, FaEnvelope, FaMapMarkerAlt } from 'react-icons/fa';
+import { defaultContactPhone } from '../phone';
 
-function ContactInfo() {
+function ContactInfo({ contactPhone = defaultContactPhone }) {
+  const displayPhone = contactPhone || defaultContactPhone
+
   return (
     <section className="contact-triangle">
       <div className="contact-triangle-layout">
@@ -15,7 +18,7 @@ function ContactInfo() {
           <div className="contact-triangle-row">
             <div className="contact-triangle-item">
               <FaPhone className="contact-icon" />
-              <p>+1 (540) 667-6300</p>
+              <p>{displayPhone}</p>
             </div>
             <div className="contact-triangle-item">
               <FaEnvelope className="contact-icon" />

@@ -21,6 +21,7 @@ function AllAmenities() {
         `*[_type == "property" && slug.current == $slug][0]{
           title,
           slug,
+          contactPhone,
           amenitiesTitle,
           amenitiesLists[]{ category, points },
           amenities
@@ -61,7 +62,11 @@ function AllAmenities() {
 
   return (
     <div className="page-wrapper">
-      <Header propertySlug={property?.slug?.current || null} navTitle={property?.title || " "} />
+      <Header
+        propertySlug={property?.slug?.current || null}
+        navTitle={property?.title || " "}
+        contactPhone={property.contactPhone}
+      />
 
       <main className="page-main container-fluid">
         <div className="container-fluid">
@@ -71,7 +76,7 @@ function AllAmenities() {
             data={property.amenities}
             propertyTitle={property.title}
           />
-          <ContactInfo />
+          <ContactInfo contactPhone={property.contactPhone} />
         </div>
       </main>
 
