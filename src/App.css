@@ -2576,13 +2576,21 @@ text-align: left;
 
 /* Amenities photos should keep their original proportions. */
 .amenities .amenities-grid {
-align-items: start;
+display: block;
+column-count: 3;
+column-gap: 1.25rem;
+max-width: 1120px;
+margin: 0 auto;
 }
 
 .amenities .amenity-item {
+width: 100%;
+max-width: none;
 aspect-ratio: auto;
 overflow: visible;
 background: transparent;
+break-inside: avoid;
+margin: 0 0 1.25rem;
 }
 
 .amenities .amenity-item img {
@@ -2590,6 +2598,18 @@ width: 100%;
 height: auto;
 object-fit: contain;
 display: block;
+}
+
+@media (max-width: 900px) {
+.amenities .amenities-grid {
+column-count: 2;
+}
+}
+
+@media (max-width: 600px) {
+.amenities .amenities-grid {
+column-count: 1;
+}
 }
 
 /* Floorplans added utilities section*/
