@@ -2605,6 +2605,7 @@ Paste at the very bottom of App.css
 .floorplans,
 .amenities,
 .gallery-section,
+.lifestyle-nearby,
 .map-section,
 .contact-section,
 .contact-triangle {
@@ -2638,6 +2639,10 @@ background-color: #ffffff !important;
 background-color: #FFD100 !important;
 }
 
+.lifestyle-nearby {
+background-color: #ffffff !important;
+}
+
 .map-section {
 background-color: #ffffff !important;
 }
@@ -2656,6 +2661,7 @@ background-color: #01426A !important;
 .floorplans,
 .amenities,
 .gallery-section,
+.lifestyle-nearby,
 .map-section,
 .contact-section,
 .contact-triangle {
@@ -2670,11 +2676,260 @@ padding-bottom: 4rem;
 .floorplans,
 .amenities,
 .gallery-section,
+.lifestyle-nearby,
 .map-section,
 .contact-section,
 .contact-triangle {
 padding-top: 2.5rem;
 padding-bottom: 2.5rem;
+}
+}
+
+.lifestyle-nearby-inner {
+width: min(1120px, calc(100% - 2rem));
+margin: 0 auto;
+}
+
+.lifestyle-nearby-copy {
+max-width: 760px;
+margin: 0 auto 2rem;
+text-align: center;
+}
+
+.lifestyle-eyebrow {
+margin: 0 0 0.5rem;
+font-size: 0.78rem;
+font-weight: 700;
+letter-spacing: 0.12em;
+text-transform: uppercase;
+color: #01426A;
+}
+
+.lifestyle-nearby-copy h2 {
+margin: 0;
+font-size: clamp(2rem, 4vw, 3rem);
+line-height: 1.1;
+color: #01426A;
+}
+
+.lifestyle-nearby-copy h2::after {
+content: "";
+display: block;
+width: 70px;
+height: 4px;
+margin: 1rem auto 1.25rem;
+background: #FFD100;
+border-radius: 999px;
+}
+
+.lifestyle-nearby-copy p {
+margin: 0 auto;
+max-width: 720px;
+line-height: 1.7;
+color: #333;
+}
+
+.lifestyle-actions {
+margin-top: 1.5rem;
+display: flex;
+justify-content: center;
+}
+
+.lifestyle-image-wrap {
+margin: 0 auto 2rem;
+border-radius: 8px;
+overflow: hidden;
+box-shadow: 0 16px 34px rgba(0, 0, 0, 0.14);
+background: #f4f6f5;
+}
+
+.lifestyle-image {
+display: block;
+width: 100%;
+height: clamp(240px, 42vw, 430px);
+object-fit: cover;
+}
+
+.lifestyle-featured {
+display: grid;
+grid-template-columns: repeat(3, minmax(0, 1fr));
+gap: 1rem;
+margin: 0 0 2rem;
+}
+
+.lifestyle-featured-card,
+.nearby-item {
+border: 1px solid rgba(1, 66, 106, 0.14);
+border-radius: 8px;
+background: #ffffff;
+box-shadow: 0 10px 24px rgba(0, 0, 0, 0.07);
+}
+
+.lifestyle-featured-card {
+padding: 1.2rem;
+border-top: 5px solid #FFD100;
+}
+
+.lifestyle-featured-card span,
+.nearby-note {
+display: inline-block;
+margin-bottom: 0.5rem;
+font-size: 0.76rem;
+font-weight: 700;
+letter-spacing: 0.08em;
+text-transform: uppercase;
+color: #01426A;
+background: rgba(255, 209, 0, 0.28);
+border-radius: 999px;
+padding: 0.25rem 0.6rem;
+}
+
+.lifestyle-featured-card h3,
+.nearby-group-heading h3,
+.nearby-item h4 {
+color: #01426A;
+}
+
+.lifestyle-featured-card h3 {
+margin: 0 0 0.5rem;
+font-size: 1.2rem;
+}
+
+.lifestyle-featured-card p,
+.nearby-group-heading p,
+.nearby-item p {
+color: #333;
+line-height: 1.6;
+}
+
+.lifestyle-featured-card p {
+margin: 0 0 0.75rem;
+}
+
+.lifestyle-meta,
+.nearby-travel {
+display: flex;
+gap: 0.6rem;
+align-items: baseline;
+color: #01426A;
+}
+
+.lifestyle-meta span,
+.nearby-travel span {
+color: #555;
+}
+
+.nearby-groups {
+display: grid;
+gap: 1.5rem;
+}
+
+.nearby-group {
+display: grid;
+grid-template-columns: minmax(220px, 0.32fr) minmax(0, 1fr);
+gap: 1.5rem;
+align-items: start;
+}
+
+.nearby-group-heading h3 {
+margin: 0 0 0.5rem;
+font-size: 1.45rem;
+}
+
+.nearby-group-heading p {
+margin: 0;
+}
+
+.nearby-list {
+display: grid;
+gap: 0.9rem;
+}
+
+.nearby-item {
+display: grid;
+grid-template-columns: minmax(0, 1fr) auto;
+gap: 1rem;
+padding: 1rem;
+align-items: center;
+}
+
+.nearby-item h4 {
+margin: 0 0 0.4rem;
+font-size: 1.1rem;
+}
+
+.nearby-item p {
+margin: 0;
+}
+
+.nearby-item-side {
+min-width: 165px;
+display: grid;
+gap: 0.8rem;
+justify-items: end;
+}
+
+.nearby-travel {
+justify-content: end;
+}
+
+.nearby-links {
+display: flex;
+flex-wrap: wrap;
+gap: 0.5rem;
+justify-content: end;
+}
+
+.nearby-links a {
+display: inline-flex;
+align-items: center;
+justify-content: center;
+min-height: 38px;
+padding: 0.55rem 0.85rem;
+border-radius: 6px;
+font-weight: 700;
+font-size: 0.9rem;
+background: #01426A;
+color: #ffffff;
+text-decoration: none !important;
+}
+
+.nearby-links a:hover,
+.nearby-links a:focus {
+background: #A4C3B2;
+color: #01426A;
+}
+
+@media (max-width: 900px) {
+.lifestyle-featured,
+.nearby-group,
+.nearby-item {
+grid-template-columns: 1fr;
+}
+
+.nearby-item-side {
+min-width: 0;
+justify-items: start;
+}
+
+.nearby-travel,
+.nearby-links {
+justify-content: start;
+}
+}
+
+@media (max-width: 640px) {
+.lifestyle-nearby-inner {
+width: min(100%, calc(100% - 1rem));
+}
+
+.lifestyle-featured-card,
+.nearby-item {
+padding: 0.9rem;
+}
+
+.nearby-links a {
+width: 100%;
 }
 }
 

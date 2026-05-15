@@ -87,6 +87,12 @@ Amenities
   Gallery
 </Link>
 
+<Link
+  to={`/property/${propertySlug}/lifestyle`}
+  className="nav-link"
+>
+  Lifestyle
+</Link>
 
 </>
 )}
@@ -150,6 +156,13 @@ Amenities
   Gallery
 </Link>
 
+<Link
+  to={`/property/${propertySlug}/lifestyle`}
+  className="mobile-link"
+  onClick={handleLinkClick}
+>
+  Lifestyle
+</Link>
 
 </>
 )}

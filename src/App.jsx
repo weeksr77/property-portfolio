@@ -10,6 +10,7 @@ import ContactUs from './pages/ContactUs'
 import PortfolioPage from './pages/PortfolioPage'
 import Vacancies from './pages/vacancies'
 import GalleryPage from './pages/GalleryPage'
+import LifestylePage from './pages/LifestylePage'
 
 function App() {
   return (
@@ -33,6 +34,7 @@ function App() {
         <Route path="/property/:slug/contact" element={<ContactUs />} />
 
         <Route path="/property/:slug/gallery" element={<GalleryPage />} />
+        <Route path="/property/:slug/lifestyle" element={<LifestylePage />} />
 
               {/* Applicants (global + property-specific) */}
       <Route path="/vacancies" element={<Vacancies />} />                 {/* keep if you already link here */}
@@ -52,6 +54,5 @@ function App() {
 }
 
 export default App
-
 
 

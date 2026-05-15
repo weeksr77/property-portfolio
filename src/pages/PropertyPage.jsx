@@ -12,6 +12,7 @@ import Teaser from "../components/Teaser"
 import Plans from "../components/Plans"
 import Amenities from "../components/Amenities"
 import Gallery from "../components/Gallery"
+import LifestyleNearby from "../components/LifestyleNearby"
 import Map from "../components/Map"
 import Contact from "../components/Contact"
 import ContactInfo from "../components/ContactInfo"
@@ -71,6 +72,23 @@ function PropertyPage() {
 
           amenities,
           gallery,
+          lifestyleTitle,
+          lifestyleIntro,
+          lifestyleHeroImage,
+          nearbyGroups[]{
+            title,
+            description,
+            items[]{
+              name,
+              summary,
+              travelTime,
+              distance,
+              note,
+              websiteUrl,
+              directionsUrl,
+              featured
+            }
+          },
           location,
           contactEmail,
           contactPhone,
@@ -209,6 +227,14 @@ function PropertyPage() {
 
         <Amenities data={property.amenities} propertyTitle={property.title} />
         <Gallery images={property.formattedGallery} />
+        <LifestyleNearby
+          title={property.lifestyleTitle}
+          intro={property.lifestyleIntro}
+          heroImage={property.lifestyleHeroImage}
+          groups={property.nearbyGroups || []}
+          propertyTitle={property.title}
+          propertySlug={property.slug?.current}
+        />
         <Map
           address={property.location}
           embedUrl={property.mapEmbedUrl}
