@@ -174,7 +174,11 @@ function PropertyPage() {
       <Hero title={property.heroTitle} image={property.heroImage} />
 
       <main className="page-main container-fluid">
-        <Teaser data={property.teaser} propertyTitle={property.title} />
+        <Teaser
+          data={property.teaser}
+          propertyTitle={property.title}
+          propertySlug={property.slug?.current}
+        />
 
         {/* ✅ NEW: Walk-through callout (between Teaser and Floor Plans) */}
         <section className="walkthrough-callout">

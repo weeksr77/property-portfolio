@@ -1,10 +1,12 @@
 import { urlFor } from '../imageUrl'
+import { Link } from 'react-router-dom'
 import 'bootstrap/dist/css/bootstrap.min.css'
 
-function Teaser({ data, propertyTitle }) {
+function Teaser({ data, propertyTitle, propertySlug }) {
   if (!data) return <p>Loading teaser…</p>
 
   const { title, description, image } = data
+  const applyPath = propertySlug ? `/property/${propertySlug}/applicants` : '/applicants'
 
   return (
     <section className="teaser-banner">
@@ -25,14 +27,9 @@ function Teaser({ data, propertyTitle }) {
           {title && <h2>{title}</h2>}
           {description && <p>{description}</p>}
 
-          <a
-              className="apply-btn"
-              href="https://castlerockmanagementllc.appfolio.com/connect/users/sign_in?portfolio_uuid=cb0facc2-f943-11f0-86d6-023e3c77b63c"            // or hardcode the URL for now
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Apply Now
-            </a>
+          <Link className="apply-btn" to={applyPath}>
+            Apply Now
+          </Link>
 
 
 
