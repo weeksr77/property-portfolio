@@ -17,7 +17,7 @@ function Amenities({ title = 'Amenities', lists = [], data = [], propertyTitle }
             {data.map((img, i) => (
               <div key={i} className="amenity-item">
                 <img
-                  src={urlFor(img).width(900).height(675).fit("crop").url()}
+                  src={urlFor(img).width(900).url()}
                   alt={propertyTitle ? `${propertyTitle} amenity ${i + 1}` : `Amenity ${i + 1}`}
                 />
               </div>

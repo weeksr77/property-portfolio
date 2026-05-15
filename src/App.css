@@ -2574,6 +2574,24 @@ text-align: left;
   display: block; 
 }
 
+/* Amenities photos should keep their original proportions. */
+.amenities .amenities-grid {
+align-items: start;
+}
+
+.amenities .amenity-item {
+aspect-ratio: auto;
+overflow: visible;
+background: transparent;
+}
+
+.amenities .amenity-item img {
+width: 100%;
+height: auto;
+object-fit: contain;
+display: block;
+}
+
 /* Floorplans added utilities section*/
 .plan-utilities {
   margin-top: 0.85rem;
